@@ -13,6 +13,15 @@
 		5B38EB7C1CB853C0001E9A68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EB7B1CB853C0001E9A68 /* Assets.xcassets */; };
 		5B38EB7F1CB853C0001E9A68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EB7D1CB853C0001E9A68 /* LaunchScreen.storyboard */; };
 		5B38EB8A1CB853C1001E9A68 /* TDConfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB891CB853C1001E9A68 /* TDConfTests.swift */; };
+		5B38EB961CB853D7001E9A68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B38EB951CB853D7001E9A68 /* CloudKit.framework */; };
+		5B38EB9C1CB85432001E9A68 /* Atendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB9B1CB85432001E9A68 /* Atendee.swift */; };
+		5B38EB9E1CB8543B001E9A68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB9D1CB8543B001E9A68 /* Session.swift */; };
+		5B38EBA11CB85451001E9A68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBA01CB85451001E9A68 /* Main.storyboard */; };
+		5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBA21CB8545B001E9A68 /* TabBarController.swift */; };
+		5B38EBA61CB85497001E9A68 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBA51CB85497001E9A68 /* Profile.storyboard */; };
+		5B38EBA91CB854A9001E9A68 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */; };
+		5B38EBAC1CB854E1001E9A68 /* Attend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBAB1CB854E1001E9A68 /* Attend.storyboard */; };
+		5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,16 @@
 		5B38EB851CB853C1001E9A68 /* TDConfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDConfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B38EB891CB853C1001E9A68 /* TDConfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDConfTests.swift; sourceTree = "<group>"; };
 		5B38EB8B1CB853C1001E9A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B38EB941CB853D1001E9A68 /* TDConf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TDConf.entitlements; sourceTree = "<group>"; };
+		5B38EB951CB853D7001E9A68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		5B38EB9B1CB85432001E9A68 /* Atendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atendee.swift; sourceTree = "<group>"; };
+		5B38EB9D1CB8543B001E9A68 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		5B38EBA01CB85451001E9A68 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5B38EBA21CB8545B001E9A68 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5B38EBA51CB85497001E9A68 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		5B38EBAB1CB854E1001E9A68 /* Attend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attend.storyboard; sourceTree = "<group>"; };
+		5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBCloudKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B38EB961CB853D7001E9A68 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +79,7 @@
 		5B38EB681CB853C0001E9A68 = {
 			isa = PBXGroup;
 			children = (
+				5B38EB951CB853D7001E9A68 /* CloudKit.framework */,
 				5B38EB731CB853C0001E9A68 /* TDConf */,
 				5B38EB881CB853C1001E9A68 /* TDConfTests */,
 				5B38EB721CB853C0001E9A68 /* Products */,
@@ -77,12 +98,12 @@
 		5B38EB731CB853C0001E9A68 /* TDConf */ = {
 			isa = PBXGroup;
 			children = (
-				5B38EB741CB853C0001E9A68 /* AppDelegate.swift */,
+				5B38EB9A1CB85427001E9A68 /* Util */,
+				5B38EB991CB85406001E9A68 /* Model */,
+				5B38EB981CB853FF001E9A68 /* Controller */,
+				5B38EB971CB853E2001E9A68 /* Supporting Files */,
 				5B38EB761CB853C0001E9A68 /* ViewController.swift */,
 				5B38EB781CB853C0001E9A68 /* Main.storyboard */,
-				5B38EB7B1CB853C0001E9A68 /* Assets.xcassets */,
-				5B38EB7D1CB853C0001E9A68 /* LaunchScreen.storyboard */,
-				5B38EB801CB853C0001E9A68 /* Info.plist */,
 			);
 			path = TDConf;
 			sourceTree = "<group>";
@@ -94,6 +115,79 @@
 				5B38EB8B1CB853C1001E9A68 /* Info.plist */,
 			);
 			path = TDConfTests;
+			sourceTree = "<group>";
+		};
+		5B38EB971CB853E2001E9A68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EB741CB853C0001E9A68 /* AppDelegate.swift */,
+				5B38EB941CB853D1001E9A68 /* TDConf.entitlements */,
+				5B38EB7B1CB853C0001E9A68 /* Assets.xcassets */,
+				5B38EB7D1CB853C0001E9A68 /* LaunchScreen.storyboard */,
+				5B38EB801CB853C0001E9A68 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B38EB981CB853FF001E9A68 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBAA1CB854D6001E9A68 /* Attend */,
+				5B38EBA71CB8549A001E9A68 /* Schedule */,
+				5B38EBA41CB85487001E9A68 /* Profile */,
+				5B38EB9F1CB85446001E9A68 /* Main */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		5B38EB991CB85406001E9A68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EB9D1CB8543B001E9A68 /* Session.swift */,
+				5B38EB9B1CB85432001E9A68 /* Atendee.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5B38EB9A1CB85427001E9A68 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		5B38EB9F1CB85446001E9A68 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBA01CB85451001E9A68 /* Main.storyboard */,
+				5B38EBA21CB8545B001E9A68 /* TabBarController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		5B38EBA41CB85487001E9A68 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBA51CB85497001E9A68 /* Profile.storyboard */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		5B38EBA71CB8549A001E9A68 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		5B38EBAA1CB854D6001E9A68 /* Attend */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBAB1CB854E1001E9A68 /* Attend.storyboard */,
+			);
+			name = Attend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +240,12 @@
 				TargetAttributes = {
 					5B38EB701CB853C0001E9A68 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = W9C5RFHWCR;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					5B38EB841CB853C1001E9A68 = {
 						CreatedOnToolsVersion = 7.3;
@@ -179,7 +279,11 @@
 			files = (
 				5B38EB7F1CB853C0001E9A68 /* LaunchScreen.storyboard in Resources */,
 				5B38EB7C1CB853C0001E9A68 /* Assets.xcassets in Resources */,
+				5B38EBA61CB85497001E9A68 /* Profile.storyboard in Resources */,
+				5B38EBAC1CB854E1001E9A68 /* Attend.storyboard in Resources */,
 				5B38EB7A1CB853C0001E9A68 /* Main.storyboard in Resources */,
+				5B38EBA11CB85451001E9A68 /* Main.storyboard in Resources */,
+				5B38EBA91CB854A9001E9A68 /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B38EB9E1CB8543B001E9A68 /* Session.swift in Sources */,
 				5B38EB771CB853C0001E9A68 /* ViewController.swift in Sources */,
 				5B38EB751CB853C0001E9A68 /* AppDelegate.swift in Sources */,
+				5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */,
+				5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */,
+				5B38EB9C1CB85432001E9A68 /* Atendee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,9 +437,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TDConf/TDConf.entitlements;
 				INFOPLIST_FILE = TDConf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.frelei.TDConf;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kobe.TDConf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -340,9 +449,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TDConf/TDConf.entitlements;
 				INFOPLIST_FILE = TDConf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.frelei.TDConf;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kobe.TDConf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
