@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="K2Q-uL-zPT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UsS-rJ-WCT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TitilliumWeb-Italic.ttf">
+            <string>TitilliumWeb-Italic</string>
+        </mutableArray>
+        <mutableArray key="TitilliumWeb-Light.ttf">
+            <string>TitilliumWeb-Light</string>
+        </mutableArray>
+        <mutableArray key="TitilliumWeb-Regular.ttf">
+            <string>TitilliumWeb-Regular</string>
+            <string>TitilliumWeb-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Schedule-->
         <scene sceneID="CVp-PN-xqp">
             <objects>
-                <viewController id="K2Q-uL-zPT" sceneMemberID="viewController">
+                <viewController id="K2Q-uL-zPT" customClass="ScheduleVC" customModule="TDConf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W4x-3W-Hlh"/>
                         <viewControllerLayoutGuide type="bottom" id="ueu-kS-2T6"/>
@@ -16,10 +29,115 @@
                     <view key="view" contentMode="scaleToFill" id="ExQ-qr-d3y">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-be-99J">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SESSION_CELL" rowHeight="100" id="dLQ-MG-6nx" customClass="ScheduleCell" customModule="TDConf" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dLQ-MG-6nx" id="mho-CW-80l">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rodrigo Freitas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOw-fv-Chi">
+                                                    <rect key="frame" x="8" y="31" width="584" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="deg-0Y-mAr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Light" family="Titillium Web" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit é uma tecnologia da Apple para " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9P-oM-IOf">
+                                                    <rect key="frame" x="8" y="73" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit, entendendo a Nuvem da Apple" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv2-ff-enk">
+                                                    <rect key="frame" x="8" y="8" width="584" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="2aa-6D-GeG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:40 às 17:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGO-OB-H6z">
+                                                    <rect key="frame" x="8" y="54" width="584" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="rLh-7N-gbp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Italic" family="Titillium Web" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mGO-OB-H6z" firstAttribute="top" secondItem="NOw-fv-Chi" secondAttribute="bottom" constant="7" id="1sn-7E-e2C"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Rv2-ff-enk" secondAttribute="trailing" id="7B9-r6-kcc"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Rv2-ff-enk" secondAttribute="leading" id="84F-6A-tFd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="v9P-oM-IOf" secondAttribute="bottom" constant="-2.5" id="Bos-TD-XAJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NOw-fv-Chi" secondAttribute="trailing" id="CYg-Zu-1wq"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="NOw-fv-Chi" secondAttribute="leading" id="GrL-J2-fZ0"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="v9P-oM-IOf" secondAttribute="leading" id="Rp2-7V-TJs"/>
+                                                <constraint firstItem="NOw-fv-Chi" firstAttribute="top" secondItem="Rv2-ff-enk" secondAttribute="bottom" constant="5" id="TId-La-qSC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mGO-OB-H6z" secondAttribute="trailing" id="Vnd-qa-jJ5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="v9P-oM-IOf" secondAttribute="trailing" id="gmq-KV-PKj"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="mGO-OB-H6z" secondAttribute="leading" id="im4-fa-9Sb"/>
+                                                <constraint firstItem="v9P-oM-IOf" firstAttribute="top" secondItem="mGO-OB-H6z" secondAttribute="bottom" constant="5" id="lJ8-mu-Bha"/>
+                                                <constraint firstItem="Rv2-ff-enk" firstAttribute="centerX" secondItem="mho-CW-80l" secondAttribute="centerX" id="u53-Ed-tQ7"/>
+                                                <constraint firstAttribute="topMargin" secondItem="Rv2-ff-enk" secondAttribute="top" id="z2u-Rw-qFt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAuthorSession" destination="NOw-fv-Chi" id="d4P-Jf-VMp"/>
+                                            <outlet property="lblDescriptionSession" destination="v9P-oM-IOf" id="okh-GX-PSm"/>
+                                            <outlet property="lblTimeSession" destination="mGO-OB-H6z" id="SoX-21-SFx"/>
+                                            <outlet property="lblTitleSession" destination="Rv2-ff-enk" id="OFX-3c-RPb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="K2Q-uL-zPT" id="PtE-83-PoZ"/>
+                                    <outlet property="delegate" destination="K2Q-uL-zPT" id="OVf-Vi-kZA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dvw-be-99J" firstAttribute="centerY" secondItem="ExQ-qr-d3y" secondAttribute="centerY" id="72Z-bn-itf"/>
+                            <constraint firstItem="Dvw-be-99J" firstAttribute="width" secondItem="ExQ-qr-d3y" secondAttribute="width" id="7cj-hC-fmL"/>
+                            <constraint firstItem="Dvw-be-99J" firstAttribute="height" secondItem="ExQ-qr-d3y" secondAttribute="height" id="LDS-x2-snd"/>
+                            <constraint firstItem="Dvw-be-99J" firstAttribute="centerX" secondItem="ExQ-qr-d3y" secondAttribute="centerX" id="a1s-UI-j8T"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Schedule" id="khQ-8q-4vx"/>
+                    <connections>
+                        <outlet property="tableView" destination="Dvw-be-99J" id="2sh-Lb-pgF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iiB-7v-rxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="383"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TxL-ZX-nqq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UsS-rJ-WCT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NNx-xh-mJL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K2Q-uL-zPT" kind="relationship" relationship="rootViewController" id="FCV-bF-MNf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4sR-Ps-WES" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="336" y="383"/>
         </scene>

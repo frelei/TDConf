@@ -20,8 +20,26 @@
 		5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBA21CB8545B001E9A68 /* TabBarController.swift */; };
 		5B38EBA61CB85497001E9A68 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBA51CB85497001E9A68 /* Profile.storyboard */; };
 		5B38EBA91CB854A9001E9A68 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */; };
-		5B38EBAC1CB854E1001E9A68 /* Attend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBAB1CB854E1001E9A68 /* Attend.storyboard */; };
 		5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */; };
+		5B38EBB01CB87809001E9A68 /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBAF1CB87809001E9A68 /* ScheduleVC.swift */; };
+		5B38EBB21CB87C62001E9A68 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBB11CB87C62001E9A68 /* ProfileVC.swift */; };
+		5B38EBB51CB87DFF001E9A68 /* ScheduleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBB41CB87DFF001E9A68 /* ScheduleVM.swift */; };
+		5B38EBB81CB89AF9001E9A68 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBB71CB89AF9001E9A68 /* ScheduleCell.swift */; };
+		5B38EBBB1CBA78E1001E9A68 /* Around.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBBA1CBA78E1001E9A68 /* Around.storyboard */; };
+		5B38EBBE1CBA7943001E9A68 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBBD1CBA7943001E9A68 /* Notification.storyboard */; };
+		5B38EBC01CBA7BB1001E9A68 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBBF1CBA7BB1001E9A68 /* UIKitExtension.swift */; };
+		5B38EBC91CBAAD56001E9A68 /* AroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBC81CBAAD56001E9A68 /* AroundVC.swift */; };
+		5B38EBD61CBABB58001E9A68 /* TitilliumWeb-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBCB1CBABB34001E9A68 /* TitilliumWeb-Black.ttf */; };
+		5B38EBD71CBABB58001E9A68 /* TitilliumWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBCC1CBABB34001E9A68 /* TitilliumWeb-Bold.ttf */; };
+		5B38EBD81CBABB58001E9A68 /* TitilliumWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBCD1CBABB34001E9A68 /* TitilliumWeb-BoldItalic.ttf */; };
+		5B38EBD91CBABB58001E9A68 /* TitilliumWeb-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBCE1CBABB34001E9A68 /* TitilliumWeb-ExtraLight.ttf */; };
+		5B38EBDA1CBABB58001E9A68 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBCF1CBABB34001E9A68 /* TitilliumWeb-ExtraLightItalic.ttf */; };
+		5B38EBDB1CBABB58001E9A68 /* TitilliumWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD01CBABB34001E9A68 /* TitilliumWeb-Italic.ttf */; };
+		5B38EBDC1CBABB58001E9A68 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD11CBABB34001E9A68 /* TitilliumWeb-Light.ttf */; };
+		5B38EBDD1CBABB58001E9A68 /* TitilliumWeb-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD21CBABB34001E9A68 /* TitilliumWeb-LightItalic.ttf */; };
+		5B38EBDE1CBABB58001E9A68 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD31CBABB34001E9A68 /* TitilliumWeb-Regular.ttf */; };
+		5B38EBDF1CBABB58001E9A68 /* TitilliumWeb-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD41CBABB34001E9A68 /* TitilliumWeb-SemiBold.ttf */; };
+		5B38EBE01CBABB58001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD51CBABB34001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +71,26 @@
 		5B38EBA21CB8545B001E9A68 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5B38EBA51CB85497001E9A68 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
-		5B38EBAB1CB854E1001E9A68 /* Attend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attend.storyboard; sourceTree = "<group>"; };
 		5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBCloudKit.swift; sourceTree = "<group>"; };
+		5B38EBAF1CB87809001E9A68 /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
+		5B38EBB11CB87C62001E9A68 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		5B38EBB41CB87DFF001E9A68 /* ScheduleVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVM.swift; sourceTree = "<group>"; };
+		5B38EBB71CB89AF9001E9A68 /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		5B38EBBA1CBA78E1001E9A68 /* Around.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Around.storyboard; sourceTree = "<group>"; };
+		5B38EBBD1CBA7943001E9A68 /* Notification.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		5B38EBBF1CBA7BB1001E9A68 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
+		5B38EBC81CBAAD56001E9A68 /* AroundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundVC.swift; sourceTree = "<group>"; };
+		5B38EBCB1CBABB34001E9A68 /* TitilliumWeb-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Black.ttf"; sourceTree = "<group>"; };
+		5B38EBCC1CBABB34001E9A68 /* TitilliumWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Bold.ttf"; sourceTree = "<group>"; };
+		5B38EBCD1CBABB34001E9A68 /* TitilliumWeb-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5B38EBCE1CBABB34001E9A68 /* TitilliumWeb-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-ExtraLight.ttf"; sourceTree = "<group>"; };
+		5B38EBCF1CBABB34001E9A68 /* TitilliumWeb-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		5B38EBD01CBABB34001E9A68 /* TitilliumWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Italic.ttf"; sourceTree = "<group>"; };
+		5B38EBD11CBABB34001E9A68 /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
+		5B38EBD21CBABB34001E9A68 /* TitilliumWeb-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-LightItalic.ttf"; sourceTree = "<group>"; };
+		5B38EBD31CBABB34001E9A68 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
+		5B38EBD41CBABB34001E9A68 /* TitilliumWeb-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBold.ttf"; sourceTree = "<group>"; };
+		5B38EBD51CBABB34001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +156,7 @@
 		5B38EB971CB853E2001E9A68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B38EBCA1CBABB15001E9A68 /* Fonts */,
 				5B38EB741CB853C0001E9A68 /* AppDelegate.swift */,
 				5B38EB941CB853D1001E9A68 /* TDConf.entitlements */,
 				5B38EB7B1CB853C0001E9A68 /* Assets.xcassets */,
@@ -132,7 +169,8 @@
 		5B38EB981CB853FF001E9A68 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5B38EBAA1CB854D6001E9A68 /* Attend */,
+				5B38EBBC1CBA78EF001E9A68 /* Notification */,
+				5B38EBB91CBA78AB001E9A68 /* Around */,
 				5B38EBA71CB8549A001E9A68 /* Schedule */,
 				5B38EBA41CB85487001E9A68 /* Profile */,
 				5B38EB9F1CB85446001E9A68 /* Main */,
@@ -152,7 +190,8 @@
 		5B38EB9A1CB85427001E9A68 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */,
+				5B38EBC31CBA9139001E9A68 /* Extensions */,
+				5B38EBC11CBA86EA001E9A68 /* CloudKit */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -170,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				5B38EBA51CB85497001E9A68 /* Profile.storyboard */,
+				5B38EBB11CB87C62001E9A68 /* ProfileVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -177,17 +217,71 @@
 		5B38EBA71CB8549A001E9A68 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				5B38EBB61CB89AD7001E9A68 /* View */,
 				5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */,
+				5B38EBAF1CB87809001E9A68 /* ScheduleVC.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
 		};
-		5B38EBAA1CB854D6001E9A68 /* Attend */ = {
+		5B38EBB61CB89AD7001E9A68 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B38EBAB1CB854E1001E9A68 /* Attend.storyboard */,
+				5B38EBB41CB87DFF001E9A68 /* ScheduleVM.swift */,
+				5B38EBB71CB89AF9001E9A68 /* ScheduleCell.swift */,
 			);
-			name = Attend;
+			name = View;
+			sourceTree = "<group>";
+		};
+		5B38EBB91CBA78AB001E9A68 /* Around */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBBA1CBA78E1001E9A68 /* Around.storyboard */,
+				5B38EBC81CBAAD56001E9A68 /* AroundVC.swift */,
+			);
+			name = Around;
+			sourceTree = "<group>";
+		};
+		5B38EBBC1CBA78EF001E9A68 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBBD1CBA7943001E9A68 /* Notification.storyboard */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
+		5B38EBC11CBA86EA001E9A68 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */,
+			);
+			name = CloudKit;
+			sourceTree = "<group>";
+		};
+		5B38EBC31CBA9139001E9A68 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBBF1CBA7BB1001E9A68 /* UIKitExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		5B38EBCA1CBABB15001E9A68 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBCB1CBABB34001E9A68 /* TitilliumWeb-Black.ttf */,
+				5B38EBCC1CBABB34001E9A68 /* TitilliumWeb-Bold.ttf */,
+				5B38EBCD1CBABB34001E9A68 /* TitilliumWeb-BoldItalic.ttf */,
+				5B38EBCE1CBABB34001E9A68 /* TitilliumWeb-ExtraLight.ttf */,
+				5B38EBCF1CBABB34001E9A68 /* TitilliumWeb-ExtraLightItalic.ttf */,
+				5B38EBD01CBABB34001E9A68 /* TitilliumWeb-Italic.ttf */,
+				5B38EBD11CBABB34001E9A68 /* TitilliumWeb-Light.ttf */,
+				5B38EBD21CBABB34001E9A68 /* TitilliumWeb-LightItalic.ttf */,
+				5B38EBD31CBABB34001E9A68 /* TitilliumWeb-Regular.ttf */,
+				5B38EBD41CBABB34001E9A68 /* TitilliumWeb-SemiBold.ttf */,
+				5B38EBD51CBABB34001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,12 +371,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B38EBD71CBABB58001E9A68 /* TitilliumWeb-Bold.ttf in Resources */,
 				5B38EB7F1CB853C0001E9A68 /* LaunchScreen.storyboard in Resources */,
+				5B38EBDA1CBABB58001E9A68 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */,
+				5B38EBDC1CBABB58001E9A68 /* TitilliumWeb-Light.ttf in Resources */,
+				5B38EBDF1CBABB58001E9A68 /* TitilliumWeb-SemiBold.ttf in Resources */,
+				5B38EBD81CBABB58001E9A68 /* TitilliumWeb-BoldItalic.ttf in Resources */,
+				5B38EBE01CBABB58001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */,
 				5B38EB7C1CB853C0001E9A68 /* Assets.xcassets in Resources */,
+				5B38EBDB1CBABB58001E9A68 /* TitilliumWeb-Italic.ttf in Resources */,
+				5B38EBDE1CBABB58001E9A68 /* TitilliumWeb-Regular.ttf in Resources */,
 				5B38EBA61CB85497001E9A68 /* Profile.storyboard in Resources */,
-				5B38EBAC1CB854E1001E9A68 /* Attend.storyboard in Resources */,
 				5B38EB7A1CB853C0001E9A68 /* Main.storyboard in Resources */,
 				5B38EBA11CB85451001E9A68 /* Main.storyboard in Resources */,
+				5B38EBD91CBABB58001E9A68 /* TitilliumWeb-ExtraLight.ttf in Resources */,
+				5B38EBD61CBABB58001E9A68 /* TitilliumWeb-Black.ttf in Resources */,
+				5B38EBBE1CBA7943001E9A68 /* Notification.storyboard in Resources */,
+				5B38EBBB1CBA78E1001E9A68 /* Around.storyboard in Resources */,
+				5B38EBDD1CBABB58001E9A68 /* TitilliumWeb-LightItalic.ttf in Resources */,
 				5B38EBA91CB854A9001E9A68 /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,11 +408,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B38EB9E1CB8543B001E9A68 /* Session.swift in Sources */,
+				5B38EBB01CB87809001E9A68 /* ScheduleVC.swift in Sources */,
 				5B38EB771CB853C0001E9A68 /* ViewController.swift in Sources */,
 				5B38EB751CB853C0001E9A68 /* AppDelegate.swift in Sources */,
+				5B38EBB81CB89AF9001E9A68 /* ScheduleCell.swift in Sources */,
+				5B38EBB21CB87C62001E9A68 /* ProfileVC.swift in Sources */,
 				5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */,
 				5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */,
+				5B38EBB51CB87DFF001E9A68 /* ScheduleVM.swift in Sources */,
+				5B38EBC01CBA7BB1001E9A68 /* UIKitExtension.swift in Sources */,
 				5B38EB9C1CB85432001E9A68 /* Atendee.swift in Sources */,
+				5B38EBC91CBAAD56001E9A68 /* AroundVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +554,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobe.TDConf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -454,6 +567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobe.TDConf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

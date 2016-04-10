@@ -8,7 +8,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="d62-sg-ao3">
             <objects>
-                <tabBarController id="2W1-DX-1N9" sceneMemberID="viewController">
+                <tabBarController id="2W1-DX-1N9" customClass="TabBarController" customModule="TDConf" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vCO-kl-6kA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -18,6 +18,7 @@
                         <segue destination="wZk-kw-BUC" kind="relationship" relationship="viewControllers" id="ULc-JL-6La"/>
                         <segue destination="YxL-OW-HHl" kind="relationship" relationship="viewControllers" id="vIv-fP-lfA"/>
                         <segue destination="ZW7-z0-qMZ" kind="relationship" relationship="viewControllers" id="rhD-kE-87W"/>
+                        <segue destination="MBH-QB-Ood" kind="relationship" relationship="viewControllers" id="41y-hD-Mmh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hn-YW-5Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -28,31 +29,47 @@
         <scene sceneID="AYF-LH-h0V">
             <objects>
                 <viewControllerPlaceholder storyboardName="Schedule" id="wZk-kw-BUC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="i7J-KY-UUG"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="Calendar" id="i7J-KY-UUG"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMD-DU-yz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="809.5" y="360"/>
         </scene>
-        <!--Attend-->
+        <!--Around-->
         <scene sceneID="fLZ-1E-NVV">
             <objects>
-                <viewControllerPlaceholder storyboardName="Attend" id="YxL-OW-HHl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="x5x-hE-BPa"/>
+                <viewControllerPlaceholder storyboardName="Around" id="YxL-OW-HHl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="Around Me" image="Around" id="x5x-hE-BPa"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijP-nX-Cu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886.5" y="516"/>
+            <point key="canvasLocation" x="886.5" y="466"/>
+        </scene>
+        <!--Notification-->
+        <scene sceneID="5r1-ck-wQu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notification" id="MBH-QB-Ood" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="3" title="Profile" image="Profile" id="plp-Yg-F9h"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHo-7V-hxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886.5" y="602"/>
         </scene>
         <!--Profile-->
         <scene sceneID="G9p-hz-Eb5">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="ZW7-z0-qMZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cNN-eu-Rrq"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Notification" image="Notification" id="cNN-eu-Rrq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ma-2C-1zC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="809.5" y="680"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Around" width="25" height="27"/>
+        <image name="Calendar" width="25" height="25"/>
+        <image name="Notification" width="22" height="24"/>
+        <image name="Profile" width="25" height="25"/>
+    </resources>
 </document>

@@ -8,6 +8,13 @@
 
 import UIKit
 
-class Session: NSObject {
+class Session: NSObject
+{
 
+    var title: String!
+    var startDate: NSDate!
+    var endDate: NSDate!
+    var sessionDescription: String!
+    var author: String!
+    
 }
