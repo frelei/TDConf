@@ -7,14 +7,51 @@
 //
 
 import UIKit
+import Foundation
+import CloudKit
 
-class Session: NSObject
+let SESSION_RECORD_TYPE  = "Session"
+
+class Session: CKRecord
 {
 
-    var title: String!
-    var startDate: NSDate!
-    var endDate: NSDate!
-    var sessionDescription: String!
-    var author: String!
+    var title: String!{
+        didSet{
+            title = self["title"] as! String
+        }
+        willSet{
+            
+        }
+    }
+    var startDate: NSDate!{
+        didSet{
+            startDate = self["startDate"] as! NSDate
+        }
+    }
+    var endDate: NSDate!{
+        didSet{
+            endDate = self["endDate"] as! NSDate
+        }
+    }
+    var sessionDescription: String!{
+        didSet{
+            sessionDescription = self["description"] as! String
+        }
+    }
+    var author: String!{
+        didSet{
+            author = self["author"] as! String
+        }
+    }
+    
+    
+    class func getAll(){
+        let query = CKQuery(recordType: SESSION_RECORD_TYPE, predicate: NSPredicate(value:true))
+        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.queryCompletionBlock = { (cursor: CKQueryCursor?, error: NSError?) -> Void in
+            
+        }
+    }
     
 }

@@ -5,11 +5,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TitilliumWeb-Regular.ttf">
+            <string>TitilliumWeb-Regular</string>
+            <string>TitilliumWeb-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--PEOPLE AROUND-->
         <scene sceneID="ZmR-jH-fw6">
             <objects>
-                <viewController id="vJ2-zT-fFo" sceneMemberID="viewController">
+                <viewController id="vJ2-zT-fFo" customClass="AroundVC" customModule="TDConf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ikM-X2-IQT"/>
                         <viewControllerLayoutGuide type="bottom" id="7No-jm-kYR"/>
@@ -111,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AROUD_CELL" rowHeight="85" id="xfV-qd-pDD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AROUND_CELL" rowHeight="85" id="xfV-qd-pDD" customClass="AroundCell" customModule="TDConf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xfV-qd-pDD" id="24i-Fa-YRv">
@@ -127,13 +133,19 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SE-za-95A">
                                                     <rect key="frame" x="94" y="44" width="457" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="eSo-E2-LbW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="14"/>
                                                     <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Appleseed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-JE-Q97">
                                                     <rect key="frame" x="94" y="21" width="457" height="18"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="7jQ-wY-aHp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -149,8 +161,17 @@
                                                 <constraint firstItem="1SE-za-95A" firstAttribute="top" secondItem="ejo-JE-Q97" secondAttribute="bottom" constant="5" id="yDn-xU-cpG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imvProfileImage" destination="7OG-ev-xnL" id="zdD-d3-1DK"/>
+                                            <outlet property="lblProfession" destination="1SE-za-95A" id="PTf-D3-dXt"/>
+                                            <outlet property="lblUsername" destination="ejo-JE-Q97" id="H24-WJ-cF7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vJ2-zT-fFo" id="HeY-dZ-Qlv"/>
+                                    <outlet property="delegate" destination="vJ2-zT-fFo" id="LkM-L2-Jy1"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -166,6 +187,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PEOPLE AROUND" id="Gpb-2T-Lfy"/>
+                    <connections>
+                        <outlet property="tableView" destination="GfU-e3-HGl" id="zhh-bj-Vjt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGE-Tx-b8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

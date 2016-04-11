@@ -1,5 +1,5 @@
 //
-//  AroundVC.swift
+//  NotificationVC.swift
 //  TDConf
 //
 //  Created by Rodrigo Leite on 10/04/16.
@@ -8,35 +8,17 @@
 
 import UIKit
 
-class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotificationVC: UIViewController {
 
-    // MARK: CONSTANTS
-    let AROUND_CELL = "AROUND_CELL"
-    
-    
-    // MARK: IBOULET
     @IBOutlet weak var tableView: UITableView!
-    
     
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+
     }
 
-    // MARK: TableView
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(AROUND_CELL, forIndexPath: indexPath)
-        
-        
-        return cell;
-    }
-    
-
     /*
     // MARK: - Navigation
 

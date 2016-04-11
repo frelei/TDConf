@@ -37,6 +37,9 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER, forIndexPath: indexPath)
+//        let session = self.sessions[indexPath.row]
+//        let scheduleVC = ScheduleVM()
+//        scheduleVC.session = session
         return cell;
     }
 }

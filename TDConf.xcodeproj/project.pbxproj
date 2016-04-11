@@ -40,6 +40,9 @@
 		5B38EBDE1CBABB58001E9A68 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD31CBABB34001E9A68 /* TitilliumWeb-Regular.ttf */; };
 		5B38EBDF1CBABB58001E9A68 /* TitilliumWeb-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD41CBABB34001E9A68 /* TitilliumWeb-SemiBold.ttf */; };
 		5B38EBE01CBABB58001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBD51CBABB34001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf */; };
+		5B38EBE31CBAD6AF001E9A68 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */; };
+		5B38EBE71CBAD71C001E9A68 /* AroundVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */; };
+		5B38EBE91CBAD734001E9A68 /* AroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE81CBAD734001E9A68 /* AroundCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		5B38EBD31CBABB34001E9A68 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
 		5B38EBD41CBABB34001E9A68 /* TitilliumWeb-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBold.ttf"; sourceTree = "<group>"; };
 		5B38EBD51CBABB34001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundVM.swift; sourceTree = "<group>"; };
+		5B38EBE81CBAD734001E9A68 /* AroundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,25 +223,26 @@
 		5B38EBA71CB8549A001E9A68 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				5B38EBB61CB89AD7001E9A68 /* View */,
+				5B38EBB61CB89AD7001E9A68 /* ViewModel */,
 				5B38EBA81CB854A9001E9A68 /* Schedule.storyboard */,
 				5B38EBAF1CB87809001E9A68 /* ScheduleVC.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
 		};
-		5B38EBB61CB89AD7001E9A68 /* View */ = {
+		5B38EBB61CB89AD7001E9A68 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				5B38EBB41CB87DFF001E9A68 /* ScheduleVM.swift */,
 				5B38EBB71CB89AF9001E9A68 /* ScheduleCell.swift */,
 			);
-			name = View;
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		5B38EBB91CBA78AB001E9A68 /* Around */ = {
 			isa = PBXGroup;
 			children = (
+				5B38EBE11CBAD2EC001E9A68 /* View */,
 				5B38EBBA1CBA78E1001E9A68 /* Around.storyboard */,
 				5B38EBC81CBAAD56001E9A68 /* AroundVC.swift */,
 			);
@@ -245,7 +252,9 @@
 		5B38EBBC1CBA78EF001E9A68 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				5B38EBE41CBAD6C9001E9A68 /* ViewModel */,
 				5B38EBBD1CBA7943001E9A68 /* Notification.storyboard */,
+				5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */,
 			);
 			name = Notification;
 			sourceTree = "<group>";
@@ -282,6 +291,22 @@
 				5B38EBD51CBABB34001E9A68 /* TitilliumWeb-SemiBoldItalic.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		5B38EBE11CBAD2EC001E9A68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */,
+				5B38EBE81CBAD734001E9A68 /* AroundCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5B38EBE41CBAD6C9001E9A68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +435,7 @@
 				5B38EB9E1CB8543B001E9A68 /* Session.swift in Sources */,
 				5B38EBB01CB87809001E9A68 /* ScheduleVC.swift in Sources */,
 				5B38EB771CB853C0001E9A68 /* ViewController.swift in Sources */,
+				5B38EBE71CBAD71C001E9A68 /* AroundVM.swift in Sources */,
 				5B38EB751CB853C0001E9A68 /* AppDelegate.swift in Sources */,
 				5B38EBB81CB89AF9001E9A68 /* ScheduleCell.swift in Sources */,
 				5B38EBB21CB87C62001E9A68 /* ProfileVC.swift in Sources */,
@@ -417,7 +443,9 @@
 				5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */,
 				5B38EBB51CB87DFF001E9A68 /* ScheduleVM.swift in Sources */,
 				5B38EBC01CBA7BB1001E9A68 /* UIKitExtension.swift in Sources */,
+				5B38EBE91CBAD734001E9A68 /* AroundCell.swift in Sources */,
 				5B38EB9C1CB85432001E9A68 /* Atendee.swift in Sources */,
+				5B38EBE31CBAD6AF001E9A68 /* NotificationVC.swift in Sources */,
 				5B38EBC91CBAAD56001E9A68 /* AroundVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

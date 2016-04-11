@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 struct ScheduleVM: ScheduleCellRepresentable{
     
     var title: String

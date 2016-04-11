@@ -9,16 +9,28 @@
 import Foundation
 import CloudKit
 
-class KBCloudKit {
+protocol CloudKitBase
+{
+    func save()
+    func delete()
+    func retrieve()
+}
+
+
+class KBCloudKit
+{
     
     private var container: CKContainer
     private let publicDB: CKDatabase
     private let privateDB: CKDatabase
     
-    init(){
+    init()
+    {
         container = CKContainer.defaultContainer()
         publicDB = container.publicCloudDatabase
         privateDB = container.privateCloudDatabase
     }
+    
+    
     
 }

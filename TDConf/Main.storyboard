@@ -17,8 +17,8 @@
                     <connections>
                         <segue destination="wZk-kw-BUC" kind="relationship" relationship="viewControllers" id="ULc-JL-6La"/>
                         <segue destination="YxL-OW-HHl" kind="relationship" relationship="viewControllers" id="vIv-fP-lfA"/>
-                        <segue destination="ZW7-z0-qMZ" kind="relationship" relationship="viewControllers" id="rhD-kE-87W"/>
-                        <segue destination="MBH-QB-Ood" kind="relationship" relationship="viewControllers" id="41y-hD-Mmh"/>
+                        <segue destination="sis-NI-YQz" kind="relationship" relationship="viewControllers" id="c0j-EA-W30"/>
+                        <segue destination="wxF-6w-0Fh" kind="relationship" relationship="viewControllers" id="D5o-uI-cNK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hn-YW-5Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -46,24 +46,24 @@
             <point key="canvasLocation" x="886.5" y="466"/>
         </scene>
         <!--Notification-->
-        <scene sceneID="5r1-ck-wQu">
+        <scene sceneID="UzZ-sY-bl5">
             <objects>
-                <viewControllerPlaceholder storyboardName="Notification" id="MBH-QB-Ood" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Profile" image="Profile" id="plp-Yg-F9h"/>
+                <viewControllerPlaceholder storyboardName="Notification" id="sis-NI-YQz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="Notification" image="Notification" id="xgJ-PO-BtJ"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MHo-7V-hxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1T-ws-tLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886.5" y="602"/>
+            <point key="canvasLocation" x="886.5" y="599"/>
         </scene>
         <!--Profile-->
-        <scene sceneID="G9p-hz-Eb5">
+        <scene sceneID="80K-Oa-qSl">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="ZW7-z0-qMZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Notification" image="Notification" id="cNN-eu-Rrq"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="wxF-6w-0Fh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="3" title="Profile" image="Profile" id="Uve-VT-srn"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9ma-2C-1zC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nit-Ho-gAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809.5" y="680"/>
+            <point key="canvasLocation" x="809" y="693"/>
         </scene>
     </scenes>
     <resources>

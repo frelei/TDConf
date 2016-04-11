@@ -13,5 +13,5 @@ class Atendee
     var profileImage: UIImage!
     var name: String!
     var about: String!
-    
+    var profession: String!
 }
