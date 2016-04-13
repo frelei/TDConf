@@ -14,7 +14,9 @@
         </mutableArray>
         <mutableArray key="TitilliumWeb-Regular.ttf">
             <string>TitilliumWeb-Regular</string>
-            <string>TitilliumWeb-Regular</string>
+        </mutableArray>
+        <mutableArray key="TitilliumWeb-SemiBold.ttf">
+            <string>TitilliumWeb-SemiBold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -30,66 +32,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-be-99J">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dvw-be-99J">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SESSION_CELL" rowHeight="100" id="dLQ-MG-6nx" customClass="ScheduleCell" customModule="TDConf" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SESSION_CELL" rowHeight="110" id="dLQ-MG-6nx" customClass="ScheduleCell" customModule="TDConf" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dLQ-MG-6nx" id="mho-CW-80l">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rodrigo Freitas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOw-fv-Chi">
-                                                    <rect key="frame" x="8" y="31" width="584" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="deg-0Y-mAr"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="8" y="35" width="584" height="20"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Light" family="Titillium Web" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit é uma tecnologia da Apple para " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9P-oM-IOf">
-                                                    <rect key="frame" x="8" y="73" width="584" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit é uma tecnologia da Apple para " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9P-oM-IOf">
+                                                    <rect key="frame" x="8" y="81" width="584" height="23"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit, entendendo a Nuvem da Apple" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv2-ff-enk">
-                                                    <rect key="frame" x="8" y="8" width="584" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="2aa-6D-GeG"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="CloudKit, entendendo a Nuvem da Apple" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv2-ff-enk">
+                                                    <rect key="frame" x="8" y="6" width="584" height="25"/>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-SemiBold" family="Titillium Web" pointSize="19"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:40 às 17:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGO-OB-H6z">
-                                                    <rect key="frame" x="8" y="54" width="584" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="rLh-7N-gbp"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="8" y="56" width="584" height="17"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Italic" family="Titillium Web" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mGO-OB-H6z" firstAttribute="top" secondItem="NOw-fv-Chi" secondAttribute="bottom" constant="7" id="1sn-7E-e2C"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Rv2-ff-enk" secondAttribute="trailing" id="7B9-r6-kcc"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="Rv2-ff-enk" secondAttribute="leading" id="84F-6A-tFd"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="v9P-oM-IOf" secondAttribute="bottom" constant="-2.5" id="Bos-TD-XAJ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="NOw-fv-Chi" secondAttribute="trailing" id="CYg-Zu-1wq"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="NOw-fv-Chi" secondAttribute="leading" id="GrL-J2-fZ0"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="v9P-oM-IOf" secondAttribute="leading" id="Rp2-7V-TJs"/>
-                                                <constraint firstItem="NOw-fv-Chi" firstAttribute="top" secondItem="Rv2-ff-enk" secondAttribute="bottom" constant="5" id="TId-La-qSC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mGO-OB-H6z" secondAttribute="trailing" id="Vnd-qa-jJ5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="v9P-oM-IOf" secondAttribute="trailing" id="gmq-KV-PKj"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="mGO-OB-H6z" secondAttribute="leading" id="im4-fa-9Sb"/>
-                                                <constraint firstItem="v9P-oM-IOf" firstAttribute="top" secondItem="mGO-OB-H6z" secondAttribute="bottom" constant="5" id="lJ8-mu-Bha"/>
-                                                <constraint firstItem="Rv2-ff-enk" firstAttribute="centerX" secondItem="mho-CW-80l" secondAttribute="centerX" id="u53-Ed-tQ7"/>
-                                                <constraint firstAttribute="topMargin" secondItem="Rv2-ff-enk" secondAttribute="top" id="z2u-Rw-qFt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Rv2-ff-enk" secondAttribute="trailing" id="3kt-qO-u2x"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="NOw-fv-Chi" secondAttribute="leading" id="4Ut-gS-7SK"/>
+                                                <constraint firstItem="NOw-fv-Chi" firstAttribute="top" secondItem="Rv2-ff-enk" secondAttribute="bottom" constant="4" id="EJL-9O-Xjs"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="mGO-OB-H6z" secondAttribute="leading" id="F2T-Es-C6N"/>
+                                                <constraint firstItem="mGO-OB-H6z" firstAttribute="top" secondItem="NOw-fv-Chi" secondAttribute="bottom" constant="1" id="Yn6-tp-xht"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NOw-fv-Chi" secondAttribute="trailing" id="ZQZ-ya-0Md"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Rv2-ff-enk" secondAttribute="leading" id="btH-Ru-55p"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mGO-OB-H6z" secondAttribute="trailing" id="jlS-ai-Nij"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="v9P-oM-IOf" secondAttribute="leading" id="mqu-iJ-qfW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="v9P-oM-IOf" secondAttribute="bottom" constant="-2.5" id="pvG-ay-SAx"/>
+                                                <constraint firstItem="v9P-oM-IOf" firstAttribute="top" secondItem="mGO-OB-H6z" secondAttribute="bottom" constant="8" id="uJv-so-kv7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="v9P-oM-IOf" secondAttribute="trailing" id="wld-Wb-fHa"/>
+                                                <constraint firstItem="Rv2-ff-enk" firstAttribute="top" secondItem="mho-CW-80l" secondAttribute="topMargin" constant="-2" id="yHU-j5-l9g"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

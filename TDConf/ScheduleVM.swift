@@ -10,17 +10,18 @@ import Foundation
 
 struct ScheduleVM: ScheduleCellRepresentable{
     
-    var title: String
-    var author: String
-    var description: String
-    var time: String
+    var title: String = ""
+    var author: String = ""
+    var description: String = ""
+    var time: String = ""
+    var session: Session!
     
-    var session: Session{
-        didSet{
-            self.title = session.title
-            self.author = session.author
-            self.description = session.description
-            self.time = "\(session.startDate.getHour()):\(session.startDate.getMinutes()) às \(session.endDate.getHour()):\(session.endDate.getMinutes())"
-        }
+    
+    init(session: Session)
+    {
+        self.title = session.title
+        self.author = session.author
+        self.description = session.sessionDescription
+        self.time = "\(session.startDate.getHour()):\(session.startDate.getMinutes()) às \(session.endDate.getHour()):\(session.endDate.getMinutes())"
     }
 }

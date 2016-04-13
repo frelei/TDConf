@@ -11,7 +11,7 @@ import UIKit
 class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let CELL_IDENTIFIER = "SESSION_CELL"
-    
+    var sessions = [Session]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,27 +19,33 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
+        
+        Session.fetchAll { (result, error) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.sessions = result!
+                self.tableView.reloadData()
+            })
+        }
     }
     
     // MARK: Configure
     func configureTableView(){
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 110
     }
     
     
     // MARK: UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        return sessions.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER, forIndexPath: indexPath)
-//        let session = self.sessions[indexPath.row]
-//        let scheduleVC = ScheduleVM()
-//        scheduleVC.session = session
+        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_IDENTIFIER, forIndexPath: indexPath) as! ScheduleCell
+        let session = self.sessions[indexPath.row]
+        let scheduleVC = ScheduleVM(session: session)
+        cell.configure(scheduleVC)
         return cell;
     }
 }

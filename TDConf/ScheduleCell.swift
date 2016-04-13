@@ -16,7 +16,7 @@ protocol ScheduleCellRepresentable{
 }
 
 extension ScheduleCellRepresentable{
-    var titleFontSize: UIFont { return  UIFont(name: TITILLIUM.REGULAR.rawValue, size: 17)! }
+    var titleFontSize: UIFont { return  UIFont(name: TITILLIUM.SEMI_BOLD.rawValue, size: 19)! }
     var authorFontSize: UIFont { return  UIFont(name: TITILLIUM.LIGHT.rawValue, size: 13)! }
     var timeFontSize: UIFont { return UIFont(name: TITILLIUM.ITALIC.rawValue, size:11)! }
     var descriptionFontSize: UIFont { return UIFont(name: TITILLIUM.REGULAR.rawValue, size:15)! }

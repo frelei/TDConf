@@ -30,7 +30,6 @@ class KBCloudKit
         publicDB = container.publicCloudDatabase
         privateDB = container.privateCloudDatabase
     }
-    
-    
+        
     
 }

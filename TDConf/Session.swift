@@ -14,44 +14,39 @@ let SESSION_RECORD_TYPE  = "Session"
 
 class Session: CKRecord
 {
+    var title: String!
+    var startDate: NSDate!
+    var endDate: NSDate!
+    var sessionDescription: String!
+    var author: String!
 
-    var title: String!{
-        didSet{
-            title = self["title"] as! String
-        }
-        willSet{
-            
-        }
-    }
-    var startDate: NSDate!{
-        didSet{
-            startDate = self["startDate"] as! NSDate
-        }
-    }
-    var endDate: NSDate!{
-        didSet{
-            endDate = self["endDate"] as! NSDate
-        }
-    }
-    var sessionDescription: String!{
-        didSet{
-            sessionDescription = self["description"] as! String
-        }
-    }
-    var author: String!{
-        didSet{
-            author = self["author"] as! String
-        }
+    convenience init(record: CKRecord)
+    {
+        self.init(recordType: SESSION_RECORD_TYPE)
+        self.title = record["title"] as! String
+        self.startDate = record["startDate"] as! NSDate
+        self.endDate = record["endDate"] as! NSDate
+        self.author = record["author"] as! String
+        self.sessionDescription = record["description"] as! String
     }
     
-    
-    class func getAll(){
-        let query = CKQuery(recordType: SESSION_RECORD_TYPE, predicate: NSPredicate(value:true))
-        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
-        let queryOperation = CKQueryOperation(query: query)
-        queryOperation.queryCompletionBlock = { (cursor: CKQueryCursor?, error: NSError?) -> Void in
-            
+    class func fetchAll(completion:(result:[Session]?, error: NSError?) -> Void)
+    {
+        let predicate = NSPredicate(value:true)
+        let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: true)
+        let queryOperation = KBQueryOperation(recordType: SESSION_RECORD_TYPE, predicate: predicate, resultLimit: nil, sort: sortDescriptor)
+        queryOperation.performQuery { (result, error) in
+            if error == nil
+            {
+                let sessions = result?.map({ (record) -> Session in
+                    return Session(record: record)
+                })
+                completion(result: sessions, error: nil)
+            }
+            else
+            {
+                completion(result: nil, error: error)
+            }
         }
     }
-    
 }

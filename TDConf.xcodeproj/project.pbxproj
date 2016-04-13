@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0D0B9B1CBBF7B70010A0F6 /* KBQueryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D0B9A1CBBF7B70010A0F6 /* KBQueryOperation.swift */; };
 		5B38EB751CB853C0001E9A68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB741CB853C0001E9A68 /* AppDelegate.swift */; };
 		5B38EB771CB853C0001E9A68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB761CB853C0001E9A68 /* ViewController.swift */; };
 		5B38EB7A1CB853C0001E9A68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EB781CB853C0001E9A68 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B0D0B9A1CBBF7B70010A0F6 /* KBQueryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBQueryOperation.swift; sourceTree = "<group>"; };
 		5B38EB711CB853C0001E9A68 /* TDConf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDConf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B38EB741CB853C0001E9A68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B38EB761CB853C0001E9A68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				5B38EBAD1CB854FE001E9A68 /* KBCloudKit.swift */,
+				5B0D0B9A1CBBF7B70010A0F6 /* KBQueryOperation.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				5B38EB771CB853C0001E9A68 /* ViewController.swift in Sources */,
 				5B38EBE71CBAD71C001E9A68 /* AroundVM.swift in Sources */,
 				5B38EB751CB853C0001E9A68 /* AppDelegate.swift in Sources */,
+				5B0D0B9B1CBBF7B70010A0F6 /* KBQueryOperation.swift in Sources */,
 				5B38EBB81CB89AF9001E9A68 /* ScheduleCell.swift in Sources */,
 				5B38EBB21CB87C62001E9A68 /* ProfileVC.swift in Sources */,
 				5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */,
@@ -642,6 +646,7 @@
 				5B38EB901CB853C1001E9A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B38EB911CB853C1001E9A68 /* Build configuration list for PBXNativeTarget "TDConfTests" */ = {
 			isa = XCConfigurationList;
@@ -650,6 +655,7 @@
 				5B38EB931CB853C1001E9A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
