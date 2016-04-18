@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class TabBarController: UITabBarController {
 
@@ -27,7 +28,20 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         self.initialize()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let notificationAccountChange = #selector(TabBarController.accountChangednotification(_:))
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: notificationAccountChange, name: CKAccountChangedNotification, object: nil)
+    
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CKAccountChangedNotification, object: nil)
+    }
+    
+    
     // MARK: INITIALIZER
     func initialize()
     {
@@ -57,5 +71,54 @@ class TabBarController: UITabBarController {
         }
     }
     
-
+    // MARK: NOTIFICATION
+    func accountChangednotification(notification: NSNotification)
+    {
+        Logging(notification)
+        KBCloudKit.checkStatus { (result, error) in
+            if result{
+                
+            }
+            else{
+                Logging(error?.description)
+            }
+            
+        }
+    }
+    
+    // MARK: TABBARDELEGATe
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        if item.tag > 0{
+            KBCloudKit.checkStatus({ (result, error) in
+                if result{
+                    
+                }
+                else{
+                    Logging(error?.description)
+                    self.logInIcloud()
+                }
+            })
+        }
+    }
+    
+    func logInIcloud(){
+        let title = "Sign in to iCloud"
+        let message = "Sign in to your iCloud account or create a new Apple ID and Turn on iCloud Drive to have full access to the app."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let goSettingsAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
+            UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=CASTLE")!)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) {(action) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.selectedIndex = 0
+            })
+        }
+        alert.addAction(goSettingsAction)
+        alert.addAction(cancel)
+        dispatch_async(dispatch_get_main_queue()) {
+            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
 }

@@ -44,6 +44,7 @@
 		5B38EBE31CBAD6AF001E9A68 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */; };
 		5B38EBE71CBAD71C001E9A68 /* AroundVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */; };
 		5B38EBE91CBAD734001E9A68 /* AroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE81CBAD734001E9A68 /* AroundCell.swift */; };
+		5BA85F811CC3D72C00100A97 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA85F801CC3D72C00100A97 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundVM.swift; sourceTree = "<group>"; };
 		5B38EBE81CBAD734001E9A68 /* AroundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundCell.swift; sourceTree = "<group>"; };
+		5BA85F801CC3D72C00100A97 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			children = (
 				5B38EBC31CBA9139001E9A68 /* Extensions */,
 				5B38EBC11CBA86EA001E9A68 /* CloudKit */,
+				5BA85F801CC3D72C00100A97 /* Helper.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				5B0D0B9B1CBBF7B70010A0F6 /* KBQueryOperation.swift in Sources */,
 				5B38EBB81CB89AF9001E9A68 /* ScheduleCell.swift in Sources */,
 				5B38EBB21CB87C62001E9A68 /* ProfileVC.swift in Sources */,
+				5BA85F811CC3D72C00100A97 /* Helper.swift in Sources */,
 				5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */,
 				5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */,
 				5B38EBB51CB87DFF001E9A68 /* ScheduleVM.swift in Sources */,

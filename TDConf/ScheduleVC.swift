@@ -19,12 +19,11 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
-        
-        Session.fetchAll { (result, error) in
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.sessions = result!
-                self.tableView.reloadData()
-            })
+        KBCloudKit.fetchAll(Session.TYPE, classType: Session.self) { (result, error) in
+            dispatch_async(dispatch_get_main_queue(), {
+                                self.sessions = result as! [Session]
+                                self.tableView.reloadData()
+                            })
         }
     }
     

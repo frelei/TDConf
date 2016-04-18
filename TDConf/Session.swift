@@ -10,43 +10,65 @@ import UIKit
 import Foundation
 import CloudKit
 
-let SESSION_RECORD_TYPE  = "Session"
+let SESSION_RECORD_TYPE = "Session"
+let KEY_TITLE = "title"
+let KEY_START_DATE = "startDate"
+let KEY_END_DATE = "endDate"
+let KEY_AUTHOR = "author"
+let KEY_DESCRIPTION = "description"
 
-class Session: CKRecord
+
+class Session: CKRecord, KBRecord
 {
-    var title: String!
-    var startDate: NSDate!
-    var endDate: NSDate!
-    var sessionDescription: String!
-    var author: String!
-
-    convenience init(record: CKRecord)
-    {
-        self.init(recordType: SESSION_RECORD_TYPE)
-        self.title = record["title"] as! String
-        self.startDate = record["startDate"] as! NSDate
-        self.endDate = record["endDate"] as! NSDate
-        self.author = record["author"] as! String
-        self.sessionDescription = record["description"] as! String
-    }
+    static var TYPE : String = SESSION_RECORD_TYPE
     
-    class func fetchAll(completion:(result:[Session]?, error: NSError?) -> Void)
-    {
-        let predicate = NSPredicate(value:true)
-        let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: true)
-        let queryOperation = KBQueryOperation(recordType: SESSION_RECORD_TYPE, predicate: predicate, resultLimit: nil, sort: sortDescriptor)
-        queryOperation.performQuery { (result, error) in
-            if error == nil
-            {
-                let sessions = result?.map({ (record) -> Session in
-                    return Session(record: record)
-                })
-                completion(result: sessions, error: nil)
-            }
-            else
-            {
-                completion(result: nil, error: error)
-            }
+    var title: String!{
+        didSet{
+            self[KEY_TITLE] = self.title
         }
     }
+    var startDate: NSDate!{
+        didSet{
+            self[KEY_START_DATE] = self.startDate
+        }
+    }
+    var endDate: NSDate!{
+        didSet{
+            self[KEY_END_DATE] = self.endDate
+        }
+    }
+    var sessionDescription: String!{
+        didSet{
+            self[KEY_DESCRIPTION] = self.sessionDescription
+        }
+    }
+    var author: String!{
+        didSet{
+            self[KEY_AUTHOR] = self.author
+        }
+    }
+    
+    required convenience init(record: CKRecord)
+    {
+        self.init(recordType: SESSION_RECORD_TYPE)
+        self.title = record[KEY_TITLE] as! String
+        self.startDate = record[KEY_START_DATE] as! NSDate
+        self.endDate = record[KEY_END_DATE] as! NSDate
+        self.author = record[KEY_AUTHOR] as! String
+        self.sessionDescription = record[KEY_DESCRIPTION] as! String
+    }
+    
+    
+//    func customMirror() -> Mirror {
+//        let children = DictionaryLiteral<String, Any>(dictionaryLiteral:
+//            ("title", self["title"]), ("startDate", self["startDate"]),
+//                                   ("endData", self["endDate"]), ("description", self["description"]),
+//                                   ("author", self["author"]))
+//        
+//        return Mirror.init(Session.self, children: children,
+//                           displayStyle: Mirror.DisplayStyle.Struct, 
+//                           ancestorRepresentation:.Suppressed)
+//    }
+    
+    
 }
