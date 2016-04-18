@@ -13,10 +13,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--ProfileVC-->
         <scene sceneID="bk9-ZJ-7db">
             <objects>
-                <viewController id="Rfm-pr-bot" sceneMemberID="viewController">
+                <viewController id="Rfm-pr-bot" customClass="ProfileVC" customModule="TDConf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XhR-gT-zgt"/>
                         <viewControllerLayoutGuide type="bottom" id="ZTw-ee-tPO"/>
@@ -150,6 +150,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="imgAvatar" destination="9mu-s3-PEr" id="FS8-Wu-ud5"/>
+                        <outlet property="imvBackgroundImage" destination="Ar8-aL-cbB" id="cYG-J8-yBa"/>
+                        <outlet property="lblBio" destination="LUL-Bc-i5U" id="NaS-NZ-c1y"/>
+                        <outlet property="lblName" destination="HR8-4s-P1q" id="HTm-q3-d1M"/>
+                        <outlet property="lblProfession" destination="cns-4o-yFp" id="cgH-lB-orP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbV-yp-D1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

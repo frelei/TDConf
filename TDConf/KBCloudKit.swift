@@ -29,7 +29,6 @@ extension CKRecord
         - parameter: container, the default (nil) is the default container
         - parameter: database, the default is the public database
         - parameter: completion, closure where returns the result and the error
-     
     */
     func save<T: KBRecord>(classType: T.Type, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result:CKRecord?, error: NSError?) -> Void)
     {
@@ -83,7 +82,6 @@ class KBCloudKit
         - parameter:: name: It's the container's name. if the parameter nil, it's the default container
         - paramter:: type: It's the public or private CKDatabase. Default is public
         - return: The CKDatabase from a CKContainer
-     
     */
     static func dataBaseFromContainer(name: String? = nil, type: DATABASE_TYPE) -> CKDatabase
     {
@@ -125,7 +123,6 @@ class KBCloudKit
         - parameter: completion: closure with result and error ```(result:[CKRecord]?, error: NSError?)```
      
         - Example: ``` KBCloudKit.fetchAll(Session.TYPE, classType: Session.self) ```
-     
     */
     static func fetchAll<T:KBRecord>(type: String, classType: T.Type ,completion:(result:[CKRecord]?, error: NSError?) -> Void)
     {
@@ -156,7 +153,6 @@ class KBCloudKit
         - parameter: recordID : The object Identifier
         - parameter: container: Where the object is located. The default is the default container
         - paramter: database: The database where is register is recorded. The default is public
-     
     */
     static func fetchByRecord<T: KBRecord>(classType: T.Type, recordID: CKRecordID, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result: CKRecord?, error: NSError?) -> Void)
     {
@@ -177,7 +173,6 @@ class KBCloudKit
         CheckStatus analisys the user's status on the Cloudkit
         
         - paramater: completion, closure ```(result: Bool, error: NSError)```
-     
     */
     static func checkStatus(completion:(result:Bool, error: NSError?) -> Void){
         KBCloudKit.container().accountStatusWithCompletionHandler { (accountStatus, error) in
@@ -185,8 +180,9 @@ class KBCloudKit
             case .Available, .Restricted: completion(result: true, error: nil)
             case .NoAccount, .CouldNotDetermine: completion(result: false, error: error)
             }
-            
         }
     }
+        
+    
   
 }

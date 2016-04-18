@@ -45,7 +45,6 @@ class TabBarController: UITabBarController {
     // MARK: INITIALIZER
     func initialize()
     {
-
         for (index,viewController) in self.viewControllers!.enumerate()
         {
             switch(index)
@@ -80,7 +79,7 @@ class TabBarController: UITabBarController {
                 Logging(error?.description)
             }
             else{
-                
+                // TODO: change the layout
             }
             
         }
@@ -98,7 +97,7 @@ class TabBarController: UITabBarController {
                 }
                 else
                 {
-                    
+                    // TODO: change the layout
                 }
             })
         }

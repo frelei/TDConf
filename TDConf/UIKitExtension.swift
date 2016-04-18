@@ -45,7 +45,7 @@ extension NSDate
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components(NSCalendarUnit.Year, fromDate: self);
         return components.year
-    }
+    }    
 }
 
 

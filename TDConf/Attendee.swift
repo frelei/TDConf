@@ -9,16 +9,17 @@
 import UIKit
 import CloudKit
 
-let ATENDEE = "Atendee"
+let ATTENDEE = "Attendee"
 let KEY_NAME = "name"
 let KEY_ABOUT = "about"
 let KEY_PROFESSION = "profession"
 let KEY_PROFILE = "photo"
+let KEY_EMAIL = "email"
 
 class Attendee: CKRecord, KBRecord
 {
     
-    static var TYPE : String = ATENDEE
+    static var TYPE : String = ATTENDEE
     var profileImage: CKAsset!{
         didSet{
             self["photo"] = self.profileImage 
@@ -39,6 +40,11 @@ class Attendee: CKRecord, KBRecord
            self["profession"] = self.profession
         }
     }
+    var email: String!{
+        didSet{
+            self["email"] = self.email
+        }
+    }
     
     required convenience init(record: CKRecord)
     {
@@ -47,7 +53,33 @@ class Attendee: CKRecord, KBRecord
         self.name = record[KEY_NAME] as! String
         self.about = record[KEY_ABOUT] as! String
         self.profession = record[KEY_PROFILE] as! String
+        self.email = record[KEY_EMAIL] as! String
     }
     
+    static func attendeeUser(completion:(result: CKRecord?, error: NSError?) -> Void){
+            KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+                if error == nil{
+                        let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
+                        let predicate = NSPredicate(format: "user == %@", reference)
+                        let query = KBQueryOperation(recordType: ATTENDEE, predicate: predicate, resultLimit: nil, sort: nil)
+                        query.performQuery({ (result, error) in
+                            if error == nil{
+                                if result?.count > 0{
+                                    let attendee = Attendee(record: (result?.first)!)
+                                    completion(result: attendee, error: nil)
+                                }else{
+                                    completion(result: nil, error: nil)
+                                }
+                            }else{
+                                Logging(error)
+                                completion(result: nil, error: error)
+                            }
+                        })
+                }else{
+                    Logging(error?.description)
+                    completion(result: nil, error: error)
+                }
+        }
+    }
     
 }

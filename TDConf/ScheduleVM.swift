@@ -20,6 +20,18 @@ struct ScheduleVM: ScheduleCellRepresentable{
         self.title = session.title
         self.author = session.author
         self.description = session.sessionDescription
-        self.time = "\(session.startDate.getHour()):\(session.startDate.getMinutes()) às \(session.endDate.getHour()):\(session.endDate.getMinutes())"
+        
+        let startHour = self.timeToString(session.startDate.getHour())
+        let startMinutes = self.timeToString(session.endDate.getMinutes())
+        let endHour = self.timeToString(session.endDate.getHour())
+        let endMinutes = self.timeToString(session.endDate.getMinutes())
+        self.time = "\(startHour):\(startMinutes) às \(endHour):\(endMinutes)"
     }
+    
+    
+    func timeToString(time: Int) -> String{
+        return time < 10 ? "0\(time)" : "\(time)"
+    }
+    
+    
 }
