@@ -63,6 +63,19 @@ extension UIImage{
     }
 }
 
+extension UIImageView{
+    func roundImage(){
+        self.layer.cornerRadius = self.layer.frame.height / 2.0
+    }
+}
+
+extension UIControl{
+    func roundImage(){
+        self.layer.cornerRadius = self.layer.frame.height / 2.0
+    }
+}
+
+
 extension UIColor{
     /**
         Convenience Initializer to create a UIColor. e.g: UIColor(red: 255, green: 165, blue: 0)

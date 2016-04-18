@@ -12,14 +12,17 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
 
     
     // MARK: IBOutlet
-    @IBOutlet weak var btnProfileImg: UIButton!
     @IBOutlet weak var txtFieldName: UITextField!
     @IBOutlet weak var txtFieldEmail: UITextField!
     @IBOutlet weak var txvBio: UITextView!
+    @IBOutlet weak var btnCamera: UIButton!
+    @IBOutlet weak var imgProfile: UIImageView!
     
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnCamera.roundImage()
+        imgProfile.roundImage()
         txvBio.delegate = self
         txtFieldName.delegate = self
         txtFieldEmail.delegate = self
@@ -48,6 +51,13 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
     @IBAction func btnCancelCliked(sender: AnyObject) {
         
     }
+    
+    
+    @IBAction func btnCameraCliked(sender: UIButton) {
+        
+        
+    }
+    
     
     
 }

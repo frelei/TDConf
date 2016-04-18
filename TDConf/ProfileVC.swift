@@ -22,6 +22,7 @@ class ProfileVC: UIViewController {
     // MARK: VC Life Cycle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.imgAvatar.roundImage()
         Attendee.attendeeUser { (result, error) in
             if error == nil && result != nil{
                 self.attendee = result as? Attendee

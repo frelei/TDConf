@@ -139,7 +139,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit é uma tecnologia da Apple para " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9P-oM-IOf">
-                                                    <rect key="frame" x="8" y="80.5" width="584" height="23"/>
+                                                    <rect key="frame" x="22" y="80.5" width="560" height="23"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -166,10 +166,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="NOw-fv-Chi" secondAttribute="trailing" id="ZQZ-ya-0Md"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="Rv2-ff-enk" secondAttribute="leading" id="btH-Ru-55p"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mGO-OB-H6z" secondAttribute="trailing" id="jlS-ai-Nij"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="v9P-oM-IOf" secondAttribute="leading" id="mqu-iJ-qfW"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="v9P-oM-IOf" secondAttribute="leading" constant="-14" id="mqu-iJ-qfW"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="v9P-oM-IOf" secondAttribute="bottom" constant="-2.5" id="pvG-ay-SAx"/>
                                                 <constraint firstItem="v9P-oM-IOf" firstAttribute="top" secondItem="mGO-OB-H6z" secondAttribute="bottom" constant="8" id="uJv-so-kv7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="v9P-oM-IOf" secondAttribute="trailing" id="wld-Wb-fHa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="v9P-oM-IOf" secondAttribute="trailing" constant="10" id="wld-Wb-fHa"/>
                                                 <constraint firstItem="Rv2-ff-enk" firstAttribute="top" secondItem="mho-CW-80l" secondAttribute="topMargin" constant="-2" id="yHU-j5-l9g"/>
                                             </constraints>
                                         </tableViewCellContentView>
