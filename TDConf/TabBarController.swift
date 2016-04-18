@@ -76,26 +76,29 @@ class TabBarController: UITabBarController {
     {
         Logging(notification)
         KBCloudKit.checkStatus { (result, error) in
-            if result{
-                
+            if !result || error != nil{
+                Logging(error?.description)
             }
             else{
-                Logging(error?.description)
+                
             }
             
         }
     }
     
     // MARK: TABBARDELEGATe
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem)
+    {
         if item.tag > 0{
             KBCloudKit.checkStatus({ (result, error) in
-                if result{
-                    
-                }
-                else{
+                if !result || error != nil
+                {
                     Logging(error?.description)
                     self.logInIcloud()
+                }
+                else
+                {
+                    
                 }
             })
         }
@@ -105,20 +108,23 @@ class TabBarController: UITabBarController {
         let title = "Sign in to iCloud"
         let message = "Sign in to your iCloud account or create a new Apple ID and Turn on iCloud Drive to have full access to the app."
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
         let goSettingsAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
-            UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=CASTLE")!)
+            dispatch_async(dispatch_get_main_queue(), { 
+                UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=CASTLE")!)
+            })
         }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel) {(action) in
             dispatch_async(dispatch_get_main_queue(), { 
                 self.selectedIndex = 0
             })
         }
+        
         alert.addAction(goSettingsAction)
         alert.addAction(cancel)
         dispatch_async(dispatch_get_main_queue()) {
             UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         }
-    }
-    
-    
+    }  
 }

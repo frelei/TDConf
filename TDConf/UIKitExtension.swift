@@ -46,9 +46,22 @@ extension NSDate
         let components = calendar.components(NSCalendarUnit.Year, fromDate: self);
         return components.year
     }
-    
 }
 
+
+extension UIImage{
+    
+    class func loadImageFrom(URL: NSURL, completion:(image: UIImage) -> Void)
+    {
+        let queue = dispatch_queue_create("TDConf.image", DISPATCH_QUEUE_CONCURRENT)
+        dispatch_async(queue)
+        {
+            let imageData = NSData(contentsOfURL: URL)
+            let image = UIImage(data: imageData!)
+            completion(image: image!)
+        }
+    }
+}
 
 extension UIColor{
     /**

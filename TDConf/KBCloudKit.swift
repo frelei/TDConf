@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CloudKit
 
 protocol KBRecord
@@ -15,8 +16,21 @@ protocol KBRecord
     init(record: CKRecord)
 }
 
+/**
+    CKRecord extension provide new functionalities to this data type
+ */
 extension CKRecord
 {
+    
+    /**
+        Save an object in cloudkit.
+        
+        - parameter: classType, the type of the class 
+        - parameter: container, the default (nil) is the default container
+        - parameter: database, the default is the public database
+        - parameter: completion, closure where returns the result and the error
+     
+    */
     func save<T: KBRecord>(classType: T.Type, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result:CKRecord?, error: NSError?) -> Void)
     {
         KBCloudKit.dataBaseFromContainer(container, type: database).saveRecord(self) { (record, error) in
@@ -30,9 +44,15 @@ extension CKRecord
                 completion(result: nil, error: error)
             }
         }
-        
     }
-
+    
+    /**
+        Delete an object in cloudkit.
+     
+        - parameter: container, The default (nil) is the default container
+        - parameter: database, The default (.PUBLIC) is the default database
+        - paramter: completion, closure has the result and the error
+    */
     func delete(container: String? = nil, database:DATABASE_TYPE = .PUBLIC, completion:(result:CKRecordID?, error: NSError?) -> Void)
     {
         KBCloudKit.dataBaseFromContainer(container, type: database).deleteRecordWithID(self.recordID) { (recordID, error) in
@@ -58,7 +78,7 @@ class KBCloudKit
     //static let sharedInstance = KBCloudKit()
     
     /**
-        Get From Cloudkit the container and the database related with
+         Cloudkit database related with container
      
         - parameter:: name: It's the container's name. if the parameter nil, it's the default container
         - paramter:: type: It's the public or private CKDatabase. Default is public
@@ -80,6 +100,11 @@ class KBCloudKit
         }
     }
     
+    /**
+        Cloudkit container
+        
+        - Paramter: name. The default is nil and retrieve the default container
+    */
     static func container(name: String? = nil) -> CKContainer
     {
         if let containerName = name
@@ -93,7 +118,14 @@ class KBCloudKit
     }
     
     /**
-        CRUD
+        FetchAll register from a Type
+        
+        - parameter: type: The name of the class
+        - parameter: classType: The Type of the class related with the code
+        - parameter: completion: closure with result and error ```(result:[CKRecord]?, error: NSError?)```
+     
+        - Example: ``` KBCloudKit.fetchAll(Session.TYPE, classType: Session.self) ```
+     
     */
     static func fetchAll<T:KBRecord>(type: String, classType: T.Type ,completion:(result:[CKRecord]?, error: NSError?) -> Void)
     {
@@ -117,6 +149,15 @@ class KBCloudKit
         }
     }
     
+    /**
+        Fetch record on Cloudkit by RecordID
+     
+        - parameter: classType: Type of the class related with the object
+        - parameter: recordID : The object Identifier
+        - parameter: container: Where the object is located. The default is the default container
+        - paramter: database: The database where is register is recorded. The default is public
+     
+    */
     static func fetchByRecord<T: KBRecord>(classType: T.Type, recordID: CKRecordID, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result: CKRecord?, error: NSError?) -> Void)
     {
         KBCloudKit.dataBaseFromContainer(container, type: database).fetchRecordWithID(recordID) { (record, error) in
@@ -132,6 +173,12 @@ class KBCloudKit
         }
     }
     
+    /**
+        CheckStatus analisys the user's status on the Cloudkit
+        
+        - paramater: completion, closure ```(result: Bool, error: NSError)```
+     
+    */
     static func checkStatus(completion:(result:Bool, error: NSError?) -> Void){
         KBCloudKit.container().accountStatusWithCompletionHandler { (accountStatus, error) in
             switch accountStatus{
@@ -141,6 +188,5 @@ class KBCloudKit
             
         }
     }
-    
-    
+  
 }

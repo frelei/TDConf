@@ -12,7 +12,7 @@ protocol AroundCellPresentable
 {
     var username: String { get }
     var profession: String { get }
-    var profile: UIImage {  get }
+    var profile: NSURL {  get }
 }
 
 
@@ -21,10 +21,16 @@ class AroundCell: UITableViewCell {
     @IBOutlet weak var imvProfileImage: UIImageView!
     @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var lblProfession: UILabel!
+    @IBOutlet weak var btnConnect: UIButton!
     
     
-    func configure(withPresentable presentable: AroundCellPresentable)
+    func configure(presentable: AroundCellPresentable)
     {
+        UIImage.loadImageFrom(presentable.profile) { (image) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.imvProfileImage.image = image
+            })
+        }
         self.lblUsername.text = presentable.username
         self.lblProfession.text = presentable.profession
     }

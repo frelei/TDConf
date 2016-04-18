@@ -17,7 +17,8 @@ import Foundation
  - parameter:: line: The line number in the file from where this function is called
  - parameter:: funcname: The function name from where this function is called
  */
-public func Logging<T>(object: T, filename: String = #file, line: Int = #line, funcname: String = #function) {
+public func Logging<T>(object: T, filename: String = #file, line: Int = #line, funcname: String = #function)
+{
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss:SSS"
     let process = NSProcessInfo.processInfo()

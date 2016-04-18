@@ -8,10 +8,16 @@
 
 import Foundation
 
-class AroundVM
+struct AroundVM: AroundCellPresentable
 {
+    var username: String
+    var profession: String
+    var profile: NSURL
     
-    var username : String!
-    var profession: String!
-    
+    init(attendee: Attendee)
+    {
+        self.profile = attendee.profileImage.fileURL
+        self.username = attendee.name
+        self.profession = attendee.profession
+    }
 }

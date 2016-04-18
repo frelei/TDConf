@@ -56,19 +56,5 @@ class Session: CKRecord, KBRecord
         self.endDate = record[KEY_END_DATE] as! NSDate
         self.author = record[KEY_AUTHOR] as! String
         self.sessionDescription = record[KEY_DESCRIPTION] as! String
-    }
-    
-    
-//    func customMirror() -> Mirror {
-//        let children = DictionaryLiteral<String, Any>(dictionaryLiteral:
-//            ("title", self["title"]), ("startDate", self["startDate"]),
-//                                   ("endData", self["endDate"]), ("description", self["description"]),
-//                                   ("author", self["author"]))
-//        
-//        return Mirror.init(Session.self, children: children,
-//                           displayStyle: Mirror.DisplayStyle.Struct, 
-//                           ancestorRepresentation:.Suppressed)
-//    }
-    
-    
+    } 
 }

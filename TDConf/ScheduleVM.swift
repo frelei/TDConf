@@ -13,9 +13,7 @@ struct ScheduleVM: ScheduleCellRepresentable{
     var title: String = ""
     var author: String = ""
     var description: String = ""
-    var time: String = ""
-    var session: Session!
-    
+    var time: String = ""    
     
     init(session: Session)
     {

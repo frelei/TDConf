@@ -15,7 +15,7 @@
 		5B38EB7F1CB853C0001E9A68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EB7D1CB853C0001E9A68 /* LaunchScreen.storyboard */; };
 		5B38EB8A1CB853C1001E9A68 /* TDConfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB891CB853C1001E9A68 /* TDConfTests.swift */; };
 		5B38EB961CB853D7001E9A68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B38EB951CB853D7001E9A68 /* CloudKit.framework */; };
-		5B38EB9C1CB85432001E9A68 /* Atendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB9B1CB85432001E9A68 /* Atendee.swift */; };
+		5B38EB9C1CB85432001E9A68 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB9B1CB85432001E9A68 /* Attendee.swift */; };
 		5B38EB9E1CB8543B001E9A68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EB9D1CB8543B001E9A68 /* Session.swift */; };
 		5B38EBA11CB85451001E9A68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38EBA01CB85451001E9A68 /* Main.storyboard */; };
 		5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBA21CB8545B001E9A68 /* TabBarController.swift */; };
@@ -71,7 +71,7 @@
 		5B38EB8B1CB853C1001E9A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B38EB941CB853D1001E9A68 /* TDConf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TDConf.entitlements; sourceTree = "<group>"; };
 		5B38EB951CB853D7001E9A68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		5B38EB9B1CB85432001E9A68 /* Atendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atendee.swift; sourceTree = "<group>"; };
+		5B38EB9B1CB85432001E9A68 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		5B38EB9D1CB8543B001E9A68 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5B38EBA01CB85451001E9A68 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5B38EBA21CB8545B001E9A68 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				5B38EB9D1CB8543B001E9A68 /* Session.swift */,
-				5B38EB9B1CB85432001E9A68 /* Atendee.swift */,
+				5B38EB9B1CB85432001E9A68 /* Attendee.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -452,7 +452,7 @@
 				5B38EBB51CB87DFF001E9A68 /* ScheduleVM.swift in Sources */,
 				5B38EBC01CBA7BB1001E9A68 /* UIKitExtension.swift in Sources */,
 				5B38EBE91CBAD734001E9A68 /* AroundCell.swift in Sources */,
-				5B38EB9C1CB85432001E9A68 /* Atendee.swift in Sources */,
+				5B38EB9C1CB85432001E9A68 /* Attendee.swift in Sources */,
 				5B38EBE31CBAD6AF001E9A68 /* NotificationVC.swift in Sources */,
 				5B38EBC91CBAAD56001E9A68 /* AroundVC.swift in Sources */,
 			);

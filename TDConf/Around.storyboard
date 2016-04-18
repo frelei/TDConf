@@ -9,6 +9,7 @@
         <mutableArray key="TitilliumWeb-Regular.ttf">
             <string>TitilliumWeb-Regular</string>
             <string>TitilliumWeb-Regular</string>
+            <string>TitilliumWeb-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -132,7 +133,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SE-za-95A">
-                                                    <rect key="frame" x="94" y="44" width="457" height="18"/>
+                                                    <rect key="frame" x="94" y="44" width="428" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="eSo-E2-LbW"/>
                                                     </constraints>
@@ -141,27 +142,45 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Appleseed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-JE-Q97">
-                                                    <rect key="frame" x="94" y="21" width="457" height="18"/>
+                                                    <rect key="frame" x="94" y="21" width="428" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="7jQ-wY-aHp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
+                                                    <rect key="frame" x="537" y="21" width="45" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="W3R-dV-1qx"/>
+                                                        <constraint firstAttribute="width" constant="45" id="Whc-Cf-mvm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="13"/>
+                                                    <state key="normal" title="Connect"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7OG-ev-xnL" firstAttribute="leading" secondItem="24i-Fa-YRv" secondAttribute="leadingMargin" constant="8" id="GXZ-wy-a1u"/>
                                                 <constraint firstItem="7OG-ev-xnL" firstAttribute="top" secondItem="24i-Fa-YRv" secondAttribute="topMargin" constant="5" id="HdS-Ee-a75"/>
                                                 <constraint firstItem="1SE-za-95A" firstAttribute="leading" secondItem="7OG-ev-xnL" secondAttribute="trailing" constant="18" id="Hyb-HN-ExO"/>
+                                                <constraint firstItem="O09-Wy-kRP" firstAttribute="leading" secondItem="1SE-za-95A" secondAttribute="trailing" constant="14" id="Lbn-ud-cLI"/>
                                                 <constraint firstItem="ejo-JE-Q97" firstAttribute="top" secondItem="24i-Fa-YRv" secondAttribute="topMargin" constant="13" id="PlL-eS-6Vp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="O09-Wy-kRP" secondAttribute="trailing" constant="10" id="SXb-RQ-v62"/>
+                                                <constraint firstItem="O09-Wy-kRP" firstAttribute="top" secondItem="24i-Fa-YRv" secondAttribute="topMargin" constant="13" id="Zb0-At-vpb"/>
                                                 <constraint firstItem="ejo-JE-Q97" firstAttribute="leading" secondItem="7OG-ev-xnL" secondAttribute="trailing" constant="18" id="ey1-Ak-MeV"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="1SE-za-95A" secondAttribute="trailing" constant="41" id="ine-ke-FgV"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ejo-JE-Q97" secondAttribute="trailing" constant="41" id="klF-yd-5Rk"/>
+                                                <constraint firstItem="1SE-za-95A" firstAttribute="width" secondItem="ejo-JE-Q97" secondAttribute="width" id="gtI-Ru-Kd0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ejo-JE-Q97" secondAttribute="trailing" constant="70" id="klF-yd-5Rk"/>
                                                 <constraint firstItem="1SE-za-95A" firstAttribute="top" secondItem="ejo-JE-Q97" secondAttribute="bottom" constant="5" id="yDn-xU-cpG"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Lbn-ud-cLI"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnConnect" destination="O09-Wy-kRP" id="FQN-BH-aFN"/>
                                             <outlet property="imvProfileImage" destination="7OG-ev-xnL" id="zdD-d3-1DK"/>
                                             <outlet property="lblProfession" destination="1SE-za-95A" id="PTf-D3-dXt"/>
                                             <outlet property="lblUsername" destination="ejo-JE-Q97" id="H24-WJ-cF7"/>
