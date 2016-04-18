@@ -17,6 +17,7 @@
             <string>TitilliumWeb-Regular</string>
             <string>TitilliumWeb-Regular</string>
             <string>TitilliumWeb-Regular</string>
+            <string>TitilliumWeb-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -170,7 +171,9 @@
                         <outlet property="imgAvatar" destination="9mu-s3-PEr" id="FS8-Wu-ud5"/>
                         <outlet property="imvBackgroundImage" destination="Ar8-aL-cbB" id="cYG-J8-yBa"/>
                         <outlet property="lblBio" destination="LUL-Bc-i5U" id="NaS-NZ-c1y"/>
+                        <outlet property="lblEmail" destination="rW9-9l-A0k" id="Sjw-TF-1vD"/>
                         <outlet property="lblName" destination="HR8-4s-P1q" id="HTm-q3-d1M"/>
+                        <outlet property="lblProfession" destination="Zze-Nb-Dkb" id="R4N-YA-O0B"/>
                         <segue destination="lj7-EE-wJh" kind="presentation" identifier="goToEditProfileSegue" id="kPk-oZ-96c"/>
                     </connections>
                 </viewController>
@@ -357,10 +360,35 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Profession" id="7NJ-Zh-sMN">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="EHz-1t-maj">
+                                        <rect key="frame" x="0.0" y="443.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EHz-1t-maj" id="suN-gA-WSu">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Profession" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-Su-cqL">
+                                                    <rect key="frame" x="18" y="8" width="564" height="27.5"/>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qSf-Su-cqL" secondAttribute="bottom" id="oet-Ve-7v8"/>
+                                                <constraint firstItem="qSf-Su-cqL" firstAttribute="leading" secondItem="suN-gA-WSu" secondAttribute="leadingMargin" constant="10" id="puB-76-LT6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qSf-Su-cqL" secondAttribute="trailing" constant="10" id="tMz-Tz-M8Z"/>
+                                                <constraint firstItem="qSf-Su-cqL" firstAttribute="top" secondItem="suN-gA-WSu" secondAttribute="topMargin" id="z3v-hV-uwF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Biography" id="VvH-nt-5bx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rhT-Iz-IxJ">
-                                        <rect key="frame" x="0.0" y="443.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="537.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rhT-Iz-IxJ" id="4RC-ey-K8e">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -408,6 +436,7 @@
                         <outlet property="imgProfile" destination="4Q7-me-9gl" id="tEO-dM-5Ez"/>
                         <outlet property="txtFieldEmail" destination="eGK-tD-Uok" id="G53-Uj-Uyn"/>
                         <outlet property="txtFieldName" destination="D5K-mT-cTO" id="CK2-QP-1Ds"/>
+                        <outlet property="txtProfession" destination="qSf-Su-cqL" id="T7Z-XA-RmW"/>
                         <outlet property="txvBio" destination="JCn-nR-lqZ" id="mZF-zL-7Yu"/>
                     </connections>
                 </tableViewController>

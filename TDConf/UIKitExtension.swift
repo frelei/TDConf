@@ -69,12 +69,27 @@ extension UIImageView{
     }
 }
 
-extension UIControl{
+extension UIButton{
     func roundImage(){
         self.layer.cornerRadius = self.layer.frame.height / 2.0
     }
 }
 
+extension UIAlertController{
+    /**
+     Show a basic alert message to inform the user about some action
+     
+     -Paramenter:
+     -message: the message that  will be display to the user
+     */
+    class func showBasicAlertMessage(message: String, title: String) -> UIAlertController{
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alertController.addAction(action)
+        return alertController
+    }
+    
+}
 
 extension UIColor{
     /**

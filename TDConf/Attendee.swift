@@ -15,6 +15,7 @@ let KEY_ABOUT = "about"
 let KEY_PROFESSION = "profession"
 let KEY_PROFILE = "photo"
 let KEY_EMAIL = "email"
+let KEY_REFERENCE = "user"
 
 class Attendee: CKRecord, KBRecord
 {
@@ -45,6 +46,11 @@ class Attendee: CKRecord, KBRecord
             self["email"] = self.email
         }
     }
+    var userReference: CKReference!{
+        didSet{
+            self["user"] = self.userReference
+        }
+    }
     
     required convenience init(record: CKRecord)
     {
@@ -54,6 +60,7 @@ class Attendee: CKRecord, KBRecord
         self.about = record[KEY_ABOUT] as! String
         self.profession = record[KEY_PROFILE] as! String
         self.email = record[KEY_EMAIL] as! String
+        self.userReference = record[KEY_REFERENCE] as! CKReference
     }
     
     static func attendeeUser(completion:(result: CKRecord?, error: NSError?) -> Void){

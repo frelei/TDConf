@@ -16,6 +16,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblProfession: UILabel!
     @IBOutlet weak var lblBio: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
     
     var attendee: Attendee?
     
@@ -37,6 +38,7 @@ class ProfileVC: UIViewController {
         self.lblName.text = self.attendee?.name
         self.lblBio.text = self.attendee?.about
         self.lblProfession.text = self.attendee?.profession
+        self.lblEmail.text = self.attendee?.email
         UIImage.loadImageFrom(self.attendee!.profileImage.fileURL) { (image) in
             dispatch_async(dispatch_get_main_queue(), { 
                 self.imvBackgroundImage.image = image
@@ -46,7 +48,16 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func editBtnClicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("goToEditProfileSegue", sender: nil)
+        self.performSegueWithIdentifier("goToEditProfileSegue", sender: self.attendee)
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nav = segue.destinationViewController as! UINavigationController
+        let editVC = nav.viewControllers.first as! EditProfile
+        editVC.attendee = sender as? Attendee
+    }
+    
+    
 
 }
