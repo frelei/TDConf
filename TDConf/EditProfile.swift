@@ -37,6 +37,7 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
         if let attending = attendee{
             self.txtFieldEmail.text = attending.email
             self.txvBio.text = attending.about
+            self.txtProfession.text = attending.profession
             self.txtFieldName.text = attending.name
             UIImage.loadImageFrom(attending.profileImage?.fileURL, completion: { (image) in
                 dispatch_async(dispatch_get_main_queue(), { 
@@ -67,7 +68,7 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
         if let image = pickerImage{
             let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
             let localPath = documentDirectory + "/profilePicture"
-            let data = UIImagePNGRepresentation(pickerImage!)
+            let data = UIImageJPEGRepresentation(image, 0.85)
             data!.writeToFile(localPath, atomically: true)
             let photoURL = NSURL(fileURLWithPath: localPath)
             let asset = CKAsset(fileURL: photoURL)
@@ -94,7 +95,8 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
                 self.attendee?.profession = self.txtProfession.text
                 KBCloudKit.dataBaseFromContainer(type: .PUBLIC).saveRecord(self.attendee!.record!, completionHandler: { (record, error) in
                     if error == nil{
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.performSegueWithIdentifier("unwindEdit", sender: self)
+                        //self.dismissViewControllerAnimated(true, completion: nil)
                     }else{
                         Logging(error?.description)
                         let alertController = UIAlertController.showBasicAlertMessage("Occour an error on server", title: "Whoops!!!")

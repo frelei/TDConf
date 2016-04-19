@@ -34,7 +34,6 @@ class ProfileVC: UIViewController {
         }
     }
     
-    
     func configureView(){
         self.lblName.text = self.attendee?.name
         self.lblBio.text = self.attendee?.about
@@ -48,11 +47,21 @@ class ProfileVC: UIViewController {
         }
     }
     
+    // MARK: UNWINDSEGUE
+    @IBAction func unwindFromEdit(segue: UIStoryboardSegue){
+            let editProfile = segue.sourceViewController as! EditProfile
+            self.attendee = editProfile.attendee
+            dispatch_async(dispatch_get_main_queue()) { 
+                self.configureView()
+            }
+    }
+    
+    // MARK: IBACTION
     @IBAction func editBtnClicked(sender: AnyObject) {
         self.performSegueWithIdentifier("goToEditProfileSegue", sender: self.attendee)
     }
     
-    
+    // MARK: NAVIGATION
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nav = segue.destinationViewController as! UINavigationController
         let editVC = nav.viewControllers.first as! EditProfile
