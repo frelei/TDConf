@@ -30,20 +30,20 @@ extension CKRecord
         - parameter: database, the default is the public database
         - parameter: completion, closure where returns the result and the error
     */
-    func save<T: KBRecord>(classType: T.Type, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result:CKRecord?, error: NSError?) -> Void)
-    {
-        KBCloudKit.dataBaseFromContainer(container, type: database).saveRecord(self) { (record, error) in
-            if error == nil
-            {
-                completion(result: T(record:record!) as? CKRecord, error:nil)
-            }
-            else
-            {
-                Logging(error?.description)
-                completion(result: nil, error: error)
-            }
-        }
-    }
+//    func save<T: KBRecord>(classType: T.Type, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result:CKRecord?, error: NSError?) -> Void)
+//    {
+//        KBCloudKit.dataBaseFromContainer(container, type: database).saveRecord(self) { (record, error) in
+//            if error == nil
+//            {
+//                completion(result: T(record:record!) as? CKRecord, error:nil)
+//            }
+//            else
+//            {
+//                Logging(error?.description)
+//                completion(result: nil, error: error)
+//            }
+//        }
+//    }
     
     /**
         Delete an object in cloudkit.
@@ -52,25 +52,26 @@ extension CKRecord
         - parameter: database, The default (.PUBLIC) is the default database
         - paramter: completion, closure has the result and the error
     */
-    func delete(container: String? = nil, database:DATABASE_TYPE = .PUBLIC, completion:(result:CKRecordID?, error: NSError?) -> Void)
-    {
-        KBCloudKit.dataBaseFromContainer(container, type: database).deleteRecordWithID(self.recordID) { (recordID, error) in
-            if error == nil
-            {
-                completion(result: recordID, error: nil)
-            }
-            else
-            {
-                Logging(error?.description)
-                completion(result: nil, error: nil)
-            }
-        }
-    }
+//    func delete(container: String? = nil, database:DATABASE_TYPE = .PUBLIC, completion:(result:CKRecordID?, error: NSError?) -> Void)
+//    {
+//        KBCloudKit.dataBaseFromContainer(container, type: database).deleteRecordWithID(self.recordID) { (recordID, error) in
+//            if error == nil
+//            {
+//                completion(result: recordID, error: nil)
+//            }
+//            else
+//            {
+//                Logging(error?.description)
+//                completion(result: nil, error: nil)
+//            }
+//        }
+//    }
 }
 
 enum DATABASE_TYPE {
     case PUBLIC, PRIVATE
 }
+
 
 class KBCloudKit
 {
@@ -124,19 +125,20 @@ class KBCloudKit
      
         - Example: ``` KBCloudKit.fetchAll(Session.TYPE, classType: Session.self) ```
     */
-    static func fetchAll<T:KBRecord>(type: String, classType: T.Type ,completion:(result:[CKRecord]?, error: NSError?) -> Void)
+    
+    static func fetchAll<T:KBRecord>(type: String, classType: T.Type, completion:(result:[T]?, error: NSError?) -> Void)
     {
         let predicate = NSPredicate(value:true)
         let sortDescriptor = NSSortDescriptor(key: KEY_START_DATE, ascending: true)
-        let queryOperation = KBQueryOperation(recordType: type, predicate: predicate, resultLimit: nil, sort: sortDescriptor)
+        let queryOperation = KBQueryOperation<T>(recordType: type, predicate: predicate, resultLimit: nil, sort: sortDescriptor)
         queryOperation.performQuery { (result, error) in
             if error == nil
             {
-                let objects = result?.map({ (record) -> CKRecord in
-                    let k = T(record: record)
-                    return k as! CKRecord;
-                })
-                completion(result: objects, error: nil)
+//                let values = result?.map({ (element) -> T in
+//                    return T(record: element)
+//                })
+                
+                completion(result: result, error: nil)
             }
             else
             {
@@ -154,12 +156,12 @@ class KBCloudKit
         - parameter: container: Where the object is located. The default is the default container
         - paramter: database: The database where is register is recorded. The default is public
     */
-    static func fetchByRecord<T: KBRecord>(classType: T.Type, recordID: CKRecordID, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result: CKRecord?, error: NSError?) -> Void)
+    static func fetchByRecord<T: KBRecord>(classType: T.Type, recordID: CKRecordID, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result: T?, error: NSError?) -> Void)
     {
         KBCloudKit.dataBaseFromContainer(container, type: database).fetchRecordWithID(recordID) { (record, error) in
             if error == nil
             {
-                completion(result: T(record: record!) as? CKRecord, error: nil)
+                completion(result: T(record: record!), error: nil)
             }
             else
             {

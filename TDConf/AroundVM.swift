@@ -16,8 +16,8 @@ struct AroundVM: AroundCellPresentable
     
     init(attendee: Attendee)
     {
-        self.profile = attendee.profileImage.fileURL
-        self.username = attendee.name
-        self.profession = attendee.profession
+        self.profile = attendee.profileImage!.fileURL
+        self.username = attendee.name!
+        self.profession = attendee.profession!
     }
 }

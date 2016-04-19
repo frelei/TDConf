@@ -9,72 +9,81 @@
 import UIKit
 import CloudKit
 
-let ATTENDEE = "Attendee"
+let ATTENDEE_RECORD_TYPE = "Attendee"
 let KEY_NAME = "name"
-let KEY_ABOUT = "about"
+let KEY_ABOUT = "bio"
 let KEY_PROFESSION = "profession"
 let KEY_PROFILE = "photo"
 let KEY_EMAIL = "email"
 let KEY_REFERENCE = "user"
 
-class Attendee: CKRecord, KBRecord
+class Attendee: KBRecord
 {
     
-    static var TYPE : String = ATTENDEE
-    var profileImage: CKAsset!{
+    static var TYPE : String = ATTENDEE_RECORD_TYPE
+    var record: CKRecord?
+    
+    var profileImage: CKAsset?{
         didSet{
-            self["photo"] = self.profileImage 
+            self.record![KEY_PROFILE] = self.profileImage
         }
     }
-    var name: String!{
+    var name: String?{
         didSet{
-            self["name"] = self.name
+            self.record![KEY_NAME] = self.name
         }
     }
-    var about: String!{
+    var about: String?{
         didSet{
-            self["about"] = self.about
+            self.record![KEY_ABOUT] = self.about
         }
     }
-    var profession: String!{
+    var profession: String?{
         didSet{
-           self["profession"] = self.profession
+           self.record![KEY_PROFESSION] = self.profession
         }
     }
-    var email: String!{
+    var email: String?{
         didSet{
-            self["email"] = self.email
+            self.record![KEY_EMAIL] = self.email
         }
     }
-    var userReference: CKReference!{
+    var userReference: CKReference?{
         didSet{
-            self["user"] = self.userReference
+            self.record![KEY_REFERENCE] = self.userReference
         }
     }
     
-    required convenience init(record: CKRecord)
+    convenience required init(record: CKRecord)
     {
-        self.init(recordType: SESSION_RECORD_TYPE)
-        self.profileImage = record[KEY_PROFILE] as! CKAsset
-        self.name = record[KEY_NAME] as! String
-        self.about = record[KEY_ABOUT] as! String
-        self.profession = record[KEY_PROFILE] as! String
-        self.email = record[KEY_EMAIL] as! String
-        self.userReference = record[KEY_REFERENCE] as! CKReference
+        self.init()
+        self.record = record
+        self.profileImage = record[KEY_PROFILE] as? CKAsset
+        self.name = record[KEY_NAME] as? String
+        self.about = record[KEY_ABOUT] as? String
+        self.profession = record[KEY_PROFESSION] as? String
+        self.email = record[KEY_EMAIL] as? String
+        self.userReference = record[KEY_REFERENCE] as? CKReference
     }
     
-    static func attendeeUser(completion:(result: CKRecord?, error: NSError?) -> Void){
+    convenience init(recordType: String)
+    {
+        self.init()
+        record = CKRecord(recordType: ATTENDEE_RECORD_TYPE)
+    }
+    
+    static func attendeeUser(completion:(result: Attendee?, error: NSError?) -> Void){
             KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
                 if error == nil{
                         let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
                         let predicate = NSPredicate(format: "user == %@", reference)
-                        let query = KBQueryOperation(recordType: ATTENDEE, predicate: predicate, resultLimit: nil, sort: nil)
+                        let query = KBQueryOperation<Attendee>(recordType: ATTENDEE_RECORD_TYPE, predicate: predicate, resultLimit: nil, sort: nil)
                         query.performQuery({ (result, error) in
                             if error == nil{
                                 if result?.count > 0{
-                                    let attendee = Attendee(record: (result?.first)!)
-                                    completion(result: attendee, error: nil)
+                                    completion(result: result!.first, error: nil)
                                 }else{
+                                    Logging(error?.description)
                                     completion(result: nil, error: nil)
                                 }
                             }else{

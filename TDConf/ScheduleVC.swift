@@ -20,10 +20,14 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.configureTableView()
         KBCloudKit.fetchAll(Session.TYPE, classType: Session.self) { (result, error) in
-            dispatch_async(dispatch_get_main_queue(), {
-                                self.sessions = result as! [Session]
+            if error == nil{
+                dispatch_async(dispatch_get_main_queue(), {
+                                self.sessions = result!
                                 self.tableView.reloadData()
                             })
+            }else{
+                
+            }
         }
     }
     

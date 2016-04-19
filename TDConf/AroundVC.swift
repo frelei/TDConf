@@ -22,16 +22,17 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: DATA PROVIDER
     func loadData(){
-        let query = KBQueryOperation(recordType: "Attendee"
+        let query = KBQueryOperation<Attendee>(recordType: "Attendee"
             , predicate: NSPredicate(value: true)
             , resultLimit: nil
             , sort: NSSortDescriptor(key: "Created", ascending: false))
         
-        query.performQuery { (result, error) in
+        
+        query.performQuery{ (result, error) in
             if error == nil
             {
                 dispatch_async(dispatch_get_main_queue(), { 
-                    self.attendees.appendContentsOf(result as! [Attendee])
+                    self.attendees.appendContentsOf(result!)
                     self.tableView.reloadData()
                 })
             }

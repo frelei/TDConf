@@ -18,43 +18,51 @@ let KEY_AUTHOR = "author"
 let KEY_DESCRIPTION = "description"
 
 
-class Session: CKRecord, KBRecord
+class Session: KBRecord
 {
     static var TYPE : String = SESSION_RECORD_TYPE
+    var record: CKRecord?
     
     var title: String!{
         didSet{
-            self[KEY_TITLE] = self.title
+            self.record![KEY_TITLE] = self.title
         }
     }
     var startDate: NSDate!{
         didSet{
-            self[KEY_START_DATE] = self.startDate
+            self.record![KEY_START_DATE] = self.startDate
         }
     }
     var endDate: NSDate!{
         didSet{
-            self[KEY_END_DATE] = self.endDate
+            self.record![KEY_END_DATE] = self.endDate
         }
     }
     var sessionDescription: String!{
         didSet{
-            self[KEY_DESCRIPTION] = self.sessionDescription
+            self.record![KEY_DESCRIPTION] = self.sessionDescription
         }
     }
     var author: String!{
         didSet{
-            self[KEY_AUTHOR] = self.author
+            self.record![KEY_AUTHOR] = self.author
         }
     }
     
     required convenience init(record: CKRecord)
     {
-        self.init(recordType: SESSION_RECORD_TYPE)
+        self.init()
         self.title = record[KEY_TITLE] as! String
         self.startDate = record[KEY_START_DATE] as! NSDate
         self.endDate = record[KEY_END_DATE] as! NSDate
         self.author = record[KEY_AUTHOR] as! String
         self.sessionDescription = record[KEY_DESCRIPTION] as! String
-    } 
+    }
+    
+    convenience init(recordType: String)
+    {
+        self.init()
+        record = CKRecord(recordType: SESSION_RECORD_TYPE)
+    }
+    
 }

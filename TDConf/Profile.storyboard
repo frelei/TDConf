@@ -282,7 +282,7 @@
                                         <constraint firstItem="sm9-0s-0ct" firstAttribute="leading" secondItem="P7l-Ol-kmQ" secondAttribute="leading" id="zor-E4-jUP"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4Q7-me-9gl">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4Q7-me-9gl">
                                     <rect key="frame" x="240" y="11" width="120" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="Hpu-xR-lbC"/>
@@ -387,15 +387,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Biography" id="VvH-nt-5bx">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rhT-Iz-IxJ">
-                                        <rect key="frame" x="0.0" y="537.5" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="201" id="rhT-Iz-IxJ">
+                                        <rect key="frame" x="0.0" y="537.5" width="600" height="201"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rhT-Iz-IxJ" id="4RC-ey-K8e">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="200.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JCn-nR-lqZ">
-                                                    <rect key="frame" x="18" y="8" width="564" height="27.5"/>
+                                                    <rect key="frame" x="18" y="8" width="564" height="184.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

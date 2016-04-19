@@ -21,25 +21,26 @@ class ProfileVC: UIViewController {
     var attendee: Attendee?
     
     // MARK: VC Life Cycle
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.imgAvatar.roundImage()
         Attendee.attendeeUser { (result, error) in
             if error == nil && result != nil{
-                self.attendee = result as? Attendee
-                dispatch_async(dispatch_get_main_queue(), { 
+                self.attendee = result
+                dispatch_async(dispatch_get_main_queue(), {
                     self.configureView()
                 })
             }
         }
     }
-
+    
+    
     func configureView(){
         self.lblName.text = self.attendee?.name
         self.lblBio.text = self.attendee?.about
         self.lblProfession.text = self.attendee?.profession
         self.lblEmail.text = self.attendee?.email
-        UIImage.loadImageFrom(self.attendee!.profileImage.fileURL) { (image) in
+        UIImage.loadImageFrom(self.attendee?.profileImage?.fileURL) { (image) in
             dispatch_async(dispatch_get_main_queue(), { 
                 self.imvBackgroundImage.image = image
                 self.imgAvatar.image = image
@@ -57,7 +58,4 @@ class ProfileVC: UIViewController {
         let editVC = nav.viewControllers.first as! EditProfile
         editVC.attendee = sender as? Attendee
     }
-    
-    
-
 }

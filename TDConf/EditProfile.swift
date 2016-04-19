@@ -38,7 +38,7 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
             self.txtFieldEmail.text = attending.email
             self.txvBio.text = attending.about
             self.txtFieldName.text = attending.name
-            UIImage.loadImageFrom(attending.profileImage.fileURL, completion: { (image) in
+            UIImage.loadImageFrom(attending.profileImage?.fileURL, completion: { (image) in
                 dispatch_async(dispatch_get_main_queue(), { 
                     self.imgProfile.image = image
                 })
@@ -48,28 +48,29 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
         }
     }
     
-    
     // MARK: TEXTFIELD DELEGATE
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
     }
     
-    // MARK: TEXTVIEW DELEGATE
-    func textViewDidChange(textView: UITextView) {
-        tableView.beginUpdates()
-        
-        
-        
-        tableView.endUpdates()
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+        }
+        return true
     }
     
     // MARK: - UIPIKERVIEWCONTROLLER
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let pickerImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         if let image = pickerImage{
-            let url = info[UIImagePickerControllerReferenceURL] as? NSURL
-            let asset = CKAsset(fileURL: url!)
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+            let localPath = documentDirectory + "/profilePicture"
+            let data = UIImagePNGRepresentation(pickerImage!)
+            data!.writeToFile(localPath, atomically: true)
+            let photoURL = NSURL(fileURLWithPath: localPath)
+            let asset = CKAsset(fileURL: photoURL)
             self.attendee?.profileImage = asset
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.imgProfile.image = image
@@ -77,8 +78,6 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
     
     // MARK: IBACTION
     @IBAction func btnDoneClicked(sender: AnyObject) {
@@ -89,19 +88,23 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
             KBCloudKit.container().fetchUserRecordIDWithCompletionHandler({ (recordID, error) in
                 let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
                 self.attendee?.userReference = reference
-                self.attendee?.save(Attendee.self, completion: { (result, error) in
+                self.attendee?.name = self.txtFieldName.text
+                self.attendee?.email = self.txtFieldEmail.text
+                self.attendee?.about = self.txvBio.text
+                self.attendee?.profession = self.txtProfession.text
+                KBCloudKit.dataBaseFromContainer(type: .PUBLIC).saveRecord(self.attendee!.record!, completionHandler: { (record, error) in
                     if error == nil{
                         self.dismissViewControllerAnimated(true, completion: nil)
-                    }
-                    else{
-                        let alertController = UIAlertController.showBasicAlertMessage("Occured an error on server", title: "Whoops!!!")
+                    }else{
+                        Logging(error?.description)
+                        let alertController = UIAlertController.showBasicAlertMessage("Occour an error on server", title: "Whoops!!!")
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 })
             })
         }
         else{
-            let alertController = UIAlertController.showBasicAlertMessage("Occured an error on server", title: "Whoops!!!")
+            let alertController = UIAlertController.showBasicAlertMessage("Fill all the fields", title: "Whoops!!!")
             self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
@@ -146,5 +149,4 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
 }

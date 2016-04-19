@@ -51,15 +51,20 @@ extension NSDate
 
 extension UIImage{
     
-    class func loadImageFrom(URL: NSURL, completion:(image: UIImage) -> Void)
+    class func loadImageFrom(URL: NSURL?, completion:(image: UIImage) -> Void)
     {
-        let queue = dispatch_queue_create("TDConf.image", DISPATCH_QUEUE_CONCURRENT)
-        dispatch_async(queue)
-        {
-            let imageData = NSData(contentsOfURL: URL)
-            let image = UIImage(data: imageData!)
-            completion(image: image!)
+        if let url = URL{
+            let queue = dispatch_queue_create("TDConf.image", DISPATCH_QUEUE_CONCURRENT)
+            dispatch_async(queue)
+            {
+                let imageData = NSData(contentsOfURL: url)
+                let image = UIImage(data: imageData!)
+                completion(image: image!)
+            }
+        }else{
+            completion(image: UIImage(named: "profileIcon")!)
         }
+
     }
 }
 

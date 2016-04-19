@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class KBQueryOperation
+class KBQueryOperation<T:KBRecord>
 {
     var objects: [CKRecord]?
     var query: CKQuery?
@@ -26,7 +26,7 @@ class KBQueryOperation
         self.objects = [CKRecord]()
     }
     
-    func performQuery(completion: (result:[CKRecord]?, error: NSError?) -> Void)
+    func performQuery(completion: (result:[T]?, error: NSError?) -> Void)
     {
         let operation = cursor == nil ? CKQueryOperation(query: self.query!)
                                       : CKQueryOperation(cursor: cursor!)
@@ -46,8 +46,12 @@ class KBQueryOperation
                 return
             }
             self.cursor = cursor
-            completion(result: self.objects, error: nil)
+            let values = self.objects?.map({ (element) -> T in
+                return T(record: element)
+            })
+            
+            completion(result: values, error: nil)
         }
-        CKContainer.defaultContainer().publicCloudDatabase.addOperation(operation)
+        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(operation)
     }
 }
