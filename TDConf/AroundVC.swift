@@ -25,7 +25,7 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let query = KBQueryOperation<Attendee>(recordType: "Attendee"
             , predicate: NSPredicate(value: true)
             , resultLimit: nil
-            , sort: NSSortDescriptor(key: "Created", ascending: false))
+            , sort: NSSortDescriptor(key: "creationDate", ascending: false))
         
         
         query.performQuery{ (result, error) in

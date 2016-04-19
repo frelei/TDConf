@@ -26,6 +26,7 @@ class AroundCell: UITableViewCell {
     
     func configure(presentable: AroundCellPresentable)
     {
+        self.imvProfileImage.roundImage()
         UIImage.loadImageFrom(presentable.profile) { (image) in
             dispatch_async(dispatch_get_main_queue(), { 
                 self.imvProfileImage.image = image
