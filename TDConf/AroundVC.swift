@@ -39,25 +39,36 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             
             self.query!.performQuery{ (result, error) in
+                
+                let errorText = "You need to register first. For that, go to profile tab. If you have already done so, pull down to refresh."
+
                 if error == nil
                 {
                     self.attendees.appendContentsOf(result!)
                     Attendee.attendeeUser { (result, error) in
                         dispatch_async(dispatch_get_main_queue(), {
-                            if error == nil && result != nil {
-                                self.lblYouNeedToRegister.hidden = true;
+                            
+                            if self.attendees.count == 0 {
+                                self.lblYouNeedToRegister.text = "There are no people around at the moment"
+                                self.lblYouNeedToRegister.hidden = false
+                            }
+                            else if error == nil && result != nil {
+                                self.lblYouNeedToRegister.hidden = true
                                 self.currentAttendee = result
                                 self.tableView.reloadData()
                             } else {
-                                self.lblYouNeedToRegister.hidden = false;
+                                self.lblYouNeedToRegister.text = errorText
+                                self.lblYouNeedToRegister.hidden = false
                             }
-                            self.refreshController.endRefreshing();
+                            
+                            self.refreshController.endRefreshing()
                         })
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.lblYouNeedToRegister.hidden = false;
-                        self.refreshController.endRefreshing();
+                        self.lblYouNeedToRegister.text = errorText
+                        self.lblYouNeedToRegister.hidden = false
+                        self.refreshController.endRefreshing()
                     })
                 }
             }
