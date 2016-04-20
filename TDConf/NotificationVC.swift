@@ -53,19 +53,26 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                             }
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.tableView.reloadData()
+                                self.refreshController.endRefreshing()
                             })
                         })
                         
                     } else {
+                        dispatch_async(dispatch_get_main_queue(), {
                         self.lblError.text = "Notifications couldn't be loaded right now. Pull down to try again"
                         self.lblError.hidden = false
                         Logging(error?.description)
+                        self.refreshController.endRefreshing()
+                        })
                     }
                 }
             } else {
+                dispatch_async(dispatch_get_main_queue(), {
                 self.lblError.text = "Notifications couldn't be loaded right now. Did you register already? Go to profile tab. \n\n If you have already done so, pull down to refresh"
                 self.lblError.hidden = false
                 Logging(error?.description)
+                self.refreshController.endRefreshing()
+                })
             }
         }
     }
