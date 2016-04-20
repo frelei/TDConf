@@ -44,7 +44,13 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         })
                         
                         KBCloudKit.fetchRecordsByIDs("Attendee", classType: Attendee.self, records: objects!, completion: { (records, error) in
+                            
                             self.attendeeConnection.appendContentsOf(records!)
+                           
+                            if self.attendeeConnection.count == 0 {
+                                self.lblError.text = "You don't have notifications right now. Pull down to refresh."
+                                self.lblError.hidden = false
+                            }
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.tableView.reloadData()
                             })
