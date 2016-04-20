@@ -81,8 +81,14 @@ class Attendee: KBRecord
     }
     
     static func attendeeUser(completion:(result: Attendee?, error: NSError?) -> Void){
-            KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
-                let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
+        
+        KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+            
+            if error != nil {
+                Logging(error?.description)
+                completion(result: nil, error: error)
+            } else {
+            let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
                 let predicate = NSPredicate(format: "user == %@", reference)
             
                 let query = CKQuery(recordType:  "Attendee", predicate: predicate)
@@ -96,9 +102,10 @@ class Attendee: KBRecord
                         }
                     }else{
                         Logging(error?.description)
+                        completion(result: nil, error: error)
                     }
                 })
-
+            }
         }
     }
     

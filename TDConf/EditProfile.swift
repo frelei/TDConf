@@ -25,6 +25,7 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         btnCamera.roundImage()
+        btnCamera.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         imgProfile.roundImage()
         txvBio.delegate = self
         txtFieldName.delegate = self
