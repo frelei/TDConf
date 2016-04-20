@@ -147,10 +147,11 @@
                                                     </variation>
                                                 </label>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT7-rL-RBx">
-                                                    <rect key="frame" x="536" y="27" width="44" height="32"/>
+                                                    <rect key="frame" x="536" y="27" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="Dxn-KH-2xA"/>
                                                         <constraint firstAttribute="width" constant="45" id="O1Z-wW-Bp7"/>
+                                                        <constraint firstAttribute="height" constant="44" id="cPA-AO-Gap"/>
                                                         <constraint firstAttribute="width" secondItem="lT7-rL-RBx" secondAttribute="height" multiplier="1:1" id="iwY-Ml-uK9"/>
                                                         <constraint firstAttribute="height" constant="44" id="wHl-bc-z49"/>
                                                     </constraints>
@@ -185,7 +186,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="OfK-7R-fW7" secondAttribute="trailing" constant="100" id="khy-lI-RF5"/>
                                                 <constraint firstAttribute="trailing" secondItem="lT7-rL-RBx" secondAttribute="trailing" constant="20" id="ok1-dY-uDk"/>
                                                 <constraint firstItem="lT7-rL-RBx" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="13" id="rhc-Mq-1te"/>
-                                                <constraint firstItem="lT7-rL-RBx" firstAttribute="centerY" secondItem="b8q-Je-dtX" secondAttribute="centerY" id="rvT-s3-TVj"/>
+                                                <constraint firstItem="lT7-rL-RBx" firstAttribute="centerY" secondItem="b8q-Je-dtX" secondAttribute="centerY" constant="6.75" id="rvT-s3-TVj"/>
                                                 <constraint firstItem="lT7-rL-RBx" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="top" constant="20" id="sZ0-Eg-Fzu"/>
                                                 <constraint firstItem="lT7-rL-RBx" firstAttribute="leading" secondItem="OfK-7R-fW7" secondAttribute="trailing" constant="20" id="xqu-1n-p4K"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lT7-rL-RBx" secondAttribute="trailing" constant="10" id="zez-Kr-UMf"/>

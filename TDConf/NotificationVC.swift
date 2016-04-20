@@ -114,7 +114,6 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return connect.requesterReference?.recordID == v.record!.recordID
         }.first
 
-        
         if foundConnected?.accepted == "0"{
             button.enabled = true
         }else{
@@ -133,7 +132,8 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func handleRefresh(refreshController: UIRefreshControl){
         self.attendeeConnection = [Attendee]()
-        self.refreshController.beginRefreshing();
+        self.connections = [Connection]()
+        self.refreshController.beginRefreshing()
         self.loadData();
     }
     
@@ -143,15 +143,29 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         let indexPath = self.tableView.indexPathForCell(cell)
         let connection = self.connections[indexPath!.row]
         connection.accepted = "1"
-        
-        if self.currentAttendee?.connection != nil{
+
+        if self.currentAttendee?.connection != nil && (self.currentAttendee?.connection!.contains(connection.requesterReference!))!{
             self.currentAttendee?.connection?.append(connection.requesterReference!)
         }else{
             self.currentAttendee?.connection = [CKReference]()
             self.currentAttendee?.connection?.append(connection.requesterReference!)
         }
         
-        let modifyOperation = CKModifyRecordsOperation(recordsToSave: [connection.record!, self.currentAttendee!.record!], recordIDsToDelete: nil)
+        let newConnection = CKRecord(recordType: "Connection")
+        newConnection["requester"] = connection.accepterReference
+        newConnection["accepter"] = connection.requesterReference
+        newConnection["accepted"] = "1"
+        
+        let notification = CKNotificationInfo()
+        notification.alertBody = "\(self.currentAttendee?.name!) accepted share your info with you"
+        notification.shouldSendContentAvailable = true
+        notification.soundName = UILocalNotificationDefaultSoundName
+        
+        let predicate = NSPredicate(format: "requester == %@ && accepter == %@ && accepted == %@", connection.accepterReference!, connection.requesterReference! ,"1")
+        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: predicate, options: .FiresOnRecordCreation)
+        
+        //Modify
+        let modifyOperation = CKModifyRecordsOperation(recordsToSave: [connection.record!, self.currentAttendee!.record!, newConnection], recordIDsToDelete: nil)
         modifyOperation.modifyRecordsCompletionBlock = {(records: [CKRecord]?, recordIDs: [CKRecordID]?, error: NSError?) in
             if error == nil{
                 dispatch_async(dispatch_get_main_queue(), {
