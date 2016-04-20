@@ -12,6 +12,7 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let CELL_IDENTIFIER = "SESSION_CELL"
     var sessions = [Session]()
+    let refreshController = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,15 +20,24 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
+        self.refreshController.beginRefreshing();
+        loadData();
+    }
+    
+    // MARK: Load Data
+    func loadData() {
         KBCloudKit.fetchAll(Session.TYPE, classType: Session.self) { (result, error) in
-            if error == nil{
+            if error == nil {
                 dispatch_async(dispatch_get_main_queue(), {
-                                self.sessions = result!
-                                self.tableView.reloadData()
-                            })
-            }else{
+                    self.sessions = result!
+                    self.tableView.reloadData()
+                })
+            } else {
                 
             }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.refreshController.endRefreshing()
+            })
         }
     }
     
@@ -36,6 +46,9 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 110
+        
+        refreshController.addTarget(self, action: #selector(ScheduleVC.handleRefresh(_:)), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshController)
     }
     
     
@@ -50,5 +63,11 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let scheduleVC = ScheduleVM(session: session)
         cell.configure(scheduleVC)
         return cell;
+    }
+    
+    func handleRefresh(refreshController: UIRefreshControl){
+        self.sessions = [Session]();
+        self.refreshController.beginRefreshing();
+        self.loadData();
     }
 }

@@ -32,7 +32,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func loadData(){
         
         Attendee.attendeeUser { (result, error) in
-            if error == nil{
+            if error == nil && result != nil {
                 let reference = CKReference( recordID: result!.record!.recordID, action: .DeleteSelf )
                 let predicate = NSPredicate(format: "requester == %@", reference)
                 self.query = KBQueryOperation(recordType: "Connection", predicate: predicate, resultLimit: 50, sort: nil)
@@ -52,7 +52,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         Logging(error?.description)
                     }
                 }
-            }else{
+            } else {
                 Logging(error?.description)
             }
         }
