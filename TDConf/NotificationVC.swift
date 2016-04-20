@@ -100,6 +100,9 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    @IBAction func btnConfirmClicked(sender: AnyObject) {
+    }
+    
     func handleRefresh(refreshController: UIRefreshControl){
         self.attendeeConnection = [Attendee]()
         self.refreshController.beginRefreshing();

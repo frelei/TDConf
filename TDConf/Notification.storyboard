@@ -9,6 +9,7 @@
     <customFonts key="customFonts">
         <mutableArray key="TitilliumWeb-Regular.ttf">
             <string>TitilliumWeb-Regular</string>
+            <string>TitilliumWeb-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -145,46 +146,45 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUj-x8-eBS">
-                                                    <rect key="frame" x="500" y="0.0" width="100" height="84.5"/>
-                                                    <color key="backgroundColor" red="0.96811215158795816" green="0.96811215158795816" blue="0.96811215158795816" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="9Lf-je-6IW"/>
-                                                    </constraints>
-                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT7-rL-RBx">
-                                                    <rect key="frame" x="526" y="18" width="48" height="48"/>
+                                                    <rect key="frame" x="536" y="27" width="44" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="Dxn-KH-2xA"/>
                                                         <constraint firstAttribute="width" constant="45" id="O1Z-wW-Bp7"/>
                                                         <constraint firstAttribute="width" secondItem="lT7-rL-RBx" secondAttribute="height" multiplier="1:1" id="iwY-Ml-uK9"/>
                                                         <constraint firstAttribute="height" constant="44" id="wHl-bc-z49"/>
                                                     </constraints>
-                                                    <state key="normal" image="checkmark"/>
+                                                    <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="13"/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Confirm">
+                                                        <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="Dxn-KH-2xA"/>
                                                             <exclude reference="O1Z-wW-Bp7"/>
+                                                            <exclude reference="iwY-Ml-uK9"/>
                                                             <exclude reference="wHl-bc-z49"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="btnConfirmClicked:" destination="XMe-vq-ywb" eventType="touchUpInside" id="dH3-Pw-qIT"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yMi-6d-noG" firstAttribute="leading" secondItem="b8q-Je-dtX" secondAttribute="leadingMargin" constant="8" id="0rt-hi-MTE"/>
-                                                <constraint firstAttribute="trailing" secondItem="fUj-x8-eBS" secondAttribute="trailing" id="4mc-Qt-B4u"/>
                                                 <constraint firstItem="OfK-7R-fW7" firstAttribute="leading" secondItem="yMi-6d-noG" secondAttribute="trailing" constant="18" id="6kc-Nv-RBa"/>
-                                                <constraint firstAttribute="bottom" secondItem="fUj-x8-eBS" secondAttribute="bottom" id="BJt-uA-ffD"/>
                                                 <constraint firstAttribute="bottom" secondItem="lT7-rL-RBx" secondAttribute="bottom" constant="20" id="BuM-0l-XKo"/>
                                                 <constraint firstItem="yMi-6d-noG" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="5" id="HFV-M8-qQZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="OfK-7R-fW7" secondAttribute="bottom" constant="13" id="PBH-1W-aZF"/>
-                                                <constraint firstItem="fUj-x8-eBS" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="top" id="gAG-nO-TNq"/>
                                                 <constraint firstItem="OfK-7R-fW7" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="13" id="gQ0-of-meS"/>
-                                                <constraint firstItem="lT7-rL-RBx" firstAttribute="centerY" secondItem="fUj-x8-eBS" secondAttribute="centerY" id="ieR-6l-Vvs"/>
+                                                <constraint firstAttribute="trailing" secondItem="lT7-rL-RBx" secondAttribute="trailing" constant="20" id="kaY-9x-mtN"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="OfK-7R-fW7" secondAttribute="trailing" constant="100" id="khy-lI-RF5"/>
                                                 <constraint firstAttribute="trailing" secondItem="lT7-rL-RBx" secondAttribute="trailing" constant="20" id="ok1-dY-uDk"/>
                                                 <constraint firstItem="lT7-rL-RBx" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="13" id="rhc-Mq-1te"/>
+                                                <constraint firstItem="lT7-rL-RBx" firstAttribute="centerY" secondItem="b8q-Je-dtX" secondAttribute="centerY" id="rvT-s3-TVj"/>
                                                 <constraint firstItem="lT7-rL-RBx" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="top" constant="20" id="sZ0-Eg-Fzu"/>
-                                                <constraint firstItem="lT7-rL-RBx" firstAttribute="centerX" secondItem="fUj-x8-eBS" secondAttribute="centerX" id="xat-6m-sFV"/>
                                                 <constraint firstItem="lT7-rL-RBx" firstAttribute="leading" secondItem="OfK-7R-fW7" secondAttribute="trailing" constant="20" id="xqu-1n-p4K"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lT7-rL-RBx" secondAttribute="trailing" constant="10" id="zez-Kr-UMf"/>
                                             </constraints>
@@ -261,6 +261,5 @@
     </scenes>
     <resources>
         <image name="Avatar" width="45" height="45"/>
-        <image name="checkmark" width="48" height="48"/>
     </resources>
 </document>
