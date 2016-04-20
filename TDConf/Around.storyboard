@@ -150,8 +150,13 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+<<<<<<< HEAD
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
                                                     <rect key="frame" x="532" y="21" width="50" height="44"/>
+=======
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
+                                                    <rect key="frame" x="537" y="21" width="45" height="44"/>
+>>>>>>> be5d860124569af125e46ebd9adbfe2deb709ae0
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="W3R-dV-1qx"/>
                                                         <constraint firstAttribute="width" constant="45" id="Whc-Cf-mvm"/>
@@ -241,7 +246,7 @@ If you have already done so, pull down to refresh.</string>
                 <viewControllerPlaceholder storyboardName="Profile" id="Jou-Se-U5f" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1E-PP-HaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878.5" y="178"/>
+            <point key="canvasLocation" x="1808" y="375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6h6-nD-Xzz">

@@ -145,6 +145,8 @@ class KBCloudKit
                         Logging(error?.description)
                     }
                 }
+            } else {
+                Logging("createdSubscriptions?.count is different than 0")
             }
         }
     }

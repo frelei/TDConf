@@ -46,7 +46,7 @@ class ProfileVC: UIViewController {
     
     // MARK: Load Data
     func loadAtendee() {
-        self.editButtonItem().enabled = false
+        self.btnTopLeft.enabled = false
         if self.attendee == nil {
             self.setBtnTopLeftText("Edit")
             Attendee.attendeeUser { (result, error) in
@@ -56,7 +56,7 @@ class ProfileVC: UIViewController {
                         self.activityIndicator.stopAnimating()
                         self.configureView()
                         self.btnTryAgain.hidden = true
-                        self.editButtonItem().enabled = true
+                        self.btnTopLeft.enabled = true
                     })
                 } else if result == nil && error == nil {
                     self.activityIndicator.stopAnimating()
@@ -75,6 +75,7 @@ class ProfileVC: UIViewController {
         } else {
             self.activityIndicator.stopAnimating()
             self.setBtnTopLeftText("Done")
+            self.btnTopLeft.enabled = true;
             self.configureView()
         }
     }
@@ -95,6 +96,7 @@ class ProfileVC: UIViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.imvBackgroundImage.image = image
                 self.imgAvatar.image = image
+                self.imgAvatar.contentMode = .ScaleAspectFill
             })
         }
     }
