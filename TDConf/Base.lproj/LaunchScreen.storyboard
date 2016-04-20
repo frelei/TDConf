@@ -6,8 +6,8 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="TitilliumWeb-Regular.ttf">
-            <string>TitilliumWeb-Regular</string>
+        <mutableArray key="TitilliumWeb-Light.ttf">
+            <string>TitilliumWeb-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -32,7 +32,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDConf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVh-Dx-gBr">
                                 <rect key="frame" x="20" y="396" width="560" height="92"/>
-                                <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="60"/>
+                                <fontDescription key="fontDescription" name="TitilliumWeb-Light" family="Titillium Web" pointSize="60"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

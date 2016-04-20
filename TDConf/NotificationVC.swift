@@ -17,6 +17,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var connections = [Connection]()
     var attendeeConnection = [Attendee]()
     var query: KBQueryOperation<Connection>?
+    var currentAttendee: Attendee?
     let refreshController = UIRefreshControl()
     
     // MARK: VC Life Cycle
@@ -29,9 +30,9 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: DATA PROVIDER
     func loadData(){
-        
         Attendee.attendeeUser { (result, error) in
             if error == nil && result != nil {
+                self.currentAttendee = result
                 let reference = CKReference( recordID: result!.record!.recordID, action: .DeleteSelf )
                 let predicate = NSPredicate(format: "accepter == %@", reference)
                 self.query = KBQueryOperation(recordType: "Connection", predicate: predicate, resultLimit: 50, sort: nil)
@@ -106,42 +107,29 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.loadData();
     }
     
-    @IBAction func btnConfirmClicked(sender: AnyObject) {
-            
-//        let cell = sender.superview?.superview as!
-//        let indexPath = self.tableView.indexPathForCell(cell) as! NSIndexPath
-//        let attendee = self.attendeeConnection[indexPath.row] as! Attendee
-//        
-//        let accepterReference = CKReference(recordID: accepter!.record!.recordID, action: .DeleteSelf)
-//        
-//        let notification = CKNotificationInfo()
-//        notification.alertBody = "\(accepter.name!) wants share information with you"
-//        notification.shouldSendContentAvailable = true
-//        notification.soundName = UILocalNotificationDefaultSoundName
-//        
-//        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "accepter == %@ && accepted == %@", accepterReference, "1"), options: .FiresOnRecordUpdate)
-//        
-//        let connection = CKRecord(recordType: "Connection")
-//        connection["requester"] = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
-//        connection["accepter"] = CKReference(recordID: accepter.record!.recordID, action: .DeleteSelf)
-//        connection["accepted"] = "0"
-//        
-//        let reference = CKReference(recordID: accepter.record!.recordID, action: .DeleteSelf)
-//        if self.currentAttendee?.connection != nil{
-//            self.currentAttendee?.connection?.append(reference)
-//        }else{
-//            self.currentAttendee?.connection = [CKReference]()
-//            self.currentAttendee?.connection?.append(reference)
-//        }
-//        let modifyOperation = CKModifyRecordsOperation(recordsToSave: [connection, self.currentAttendee!.record!], recordIDsToDelete: nil)
-//        modifyOperation.modifyRecordsCompletionBlock = {(records: [CKRecord]?, recordIDs: [CKRecordID]?, error: NSError?) in
-//            if error == nil{
-//                dispatch_async(dispatch_get_main_queue(), {
-//                    self.tableView.reloadData()
-//                })
-//            }
-//        }
-//        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
+    @IBAction func btnConfirmClicked(sender: UIButton) {
+        sender.enabled = false
+        let cell = sender.superview?.superview as! AroundCell
+        let indexPath = self.tableView.indexPathForCell(cell)
+        let connection = self.connections[indexPath!.row]
+        connection.accepted = "1"
+        
+        if self.currentAttendee?.connection != nil{
+            self.currentAttendee?.connection?.append(connection.requesterReference!)
+        }else{
+            self.currentAttendee?.connection = [CKReference]()
+            self.currentAttendee?.connection?.append(connection.requesterReference!)
+        }
+        
+        let modifyOperation = CKModifyRecordsOperation(recordsToSave: [connection.record!, self.currentAttendee!.record!], recordIDsToDelete: nil)
+        modifyOperation.modifyRecordsCompletionBlock = {(records: [CKRecord]?, recordIDs: [CKRecordID]?, error: NSError?) in
+            if error == nil{
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+            }
+        }
+        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
         
     }
     
