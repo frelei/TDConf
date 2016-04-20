@@ -18,12 +18,22 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
     @IBOutlet weak var txtProfession: UITextField!
     @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet var barButtonItemCancel: UIBarButtonItem!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var barButtonItemDone: UIBarButtonItem!
     
     var attendee: Attendee?
+    
+    func disablesEditButtonForFirstTimeUserIfNecessary() {
+        if attendee == nil {
+            self.barButtonItemCancel.enabled = false;
+        }
+    }
     
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.barButtonItemCancel.enabled = attendee != nil;
         btnCamera.roundImage()
         btnCamera.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         imgProfile.roundImage()
@@ -43,6 +53,7 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
             UIImage.loadImageFrom(attending.profileImage?.fileURL, completion: { (image) in
                 dispatch_async(dispatch_get_main_queue(), { 
                     self.imgProfile.image = image
+                    self.imgProfile.contentMode = .ScaleAspectFill
                 })
             })
         }else{
@@ -76,6 +87,7 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
             self.attendee?.profileImage = asset
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.imgProfile.image = image
+                self.imgProfile.contentMode = .ScaleAspectFill
             }
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -87,6 +99,10 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
             !self.txtFieldEmail.text!.isEmpty &&
             !self.txvBio.text.isEmpty &&
             !self.txtProfession.text!.isEmpty){
+            self.barButtonItemDone.enabled = false
+            self.activityIndicator.hidden = false;
+            self.activityIndicator.startAnimating()
+            
             KBCloudKit.container().fetchUserRecordIDWithCompletionHandler({ (recordID, error) in
                 let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
                 self.attendee?.userReference = reference
@@ -95,13 +111,18 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
                 self.attendee?.about = self.txvBio.text
                 self.attendee?.profession = self.txtProfession.text
                 KBCloudKit.dataBaseFromContainer(type: .PUBLIC).saveRecord(self.attendee!.record!, completionHandler: { (record, error) in
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.hidden = true
+                        self.barButtonItemDone.enabled = true
                     if error == nil{
                         self.performSegueWithIdentifier("unwindEdit", sender: self)
-                    }else{
+                    } else {
                         Logging(error?.description)
                         let alertController = UIAlertController.showBasicAlertMessage("Occour an error on server", title: "Whoops!!!")
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
+                    })
                 })
             })
         }
