@@ -34,7 +34,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         Attendee.attendeeUser { (result, error) in
             if error == nil{
                 let reference = CKReference( recordID: result!.record!.recordID, action: .DeleteSelf )
-                let predicate = NSPredicate(format: "requester == %@", reference)
+                let predicate = NSPredicate(format: "accepter == %@", reference)
                 self.query = KBQueryOperation(recordType: "Connection", predicate: predicate, resultLimit: 50, sort: nil)
                 self.query!.performQuery { (result, error) in
                     if error == nil{

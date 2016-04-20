@@ -79,14 +79,14 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = sender.superview?.superview as! AroundCell
         let accepter = cell.attendee
         
-        let attendeeReference = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
+        let accepterReference = CKReference(recordID: accepter!.record!.recordID, action: .DeleteSelf)
         
         let notification = CKNotificationInfo()
         notification.alertBody = "\(accepter.name!) wants share information with you"
         notification.shouldSendContentAvailable = true
         notification.soundName = UILocalNotificationDefaultSoundName   
         
-        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "requester == %@ && accepted == %@", attendeeReference, "1"), options: .FiresOnRecordUpdate)
+        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "accepter == %@ && accepted == %@", accepterReference, "1"), options: .FiresOnRecordUpdate)
 
         let connection = CKRecord(recordType: "Connection")
         connection["requester"] = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
