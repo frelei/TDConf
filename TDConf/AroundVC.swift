@@ -26,9 +26,9 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: DATA PROVIDER
     func loadData(){
         
-        if Settings.sharedInstance.userRecordID() != nil{
-            let recordID = CKRecordID(recordName: Settings.sharedInstance.userRecordID()!)
-            let reference = CKReference( recordID: recordID, action: .DeleteSelf )
+        KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+            //let recordID = CKRecordID(recordName: recordID!)
+            let reference = CKReference( recordID: recordID!, action: .DeleteSelf )
             if self.query == nil{
                 self.query = KBQueryOperation<Attendee>(recordType: "Attendee"
                     , predicate: NSPredicate( format: "user != %@", reference )
@@ -48,11 +48,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         })
                     }
                 }
-            }
-        }else{
-            KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
-                Settings.sharedInstance.saveUserRecordID(recordID!.recordName)
-                self.loadData()
             }
         }
     }
