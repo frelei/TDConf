@@ -24,6 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(notificationSettings)
         application.registerForRemoteNotifications()
         
+        // Adding subscription
+        Attendee.attendeeUser { (result, error) in
+            if result != nil{
+                let attendeeReference = CKReference(recordID: result!.record!.recordID, action: .DeleteSelf)
+                let notification = CKNotificationInfo()
+                notification.alertBody = "Someone wants share information with you"
+                notification.shouldSendContentAvailable = true
+                notification.soundName = UILocalNotificationDefaultSoundName
+                
+                let predicate = NSPredicate(format: "accepter == %@", attendeeReference)
+                KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: predicate, options: .FiresOnRecordCreation)
+            }
+        }
+        
         return true
     }
 

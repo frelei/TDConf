@@ -3,7 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TitilliumWeb-Regular.ttf">
+            <string>TitilliumWeb-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -18,17 +24,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="BeM-7G-YNN">
-                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <rect key="frame" x="175" y="110" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="P4g-vV-IJi"/>
-                                    <constraint firstAttribute="height" constant="250" id="d1g-85-YYj"/>
+                                    <constraint firstAttribute="width" constant="250" id="beg-KN-wP5"/>
+                                    <constraint firstAttribute="height" constant="250" id="riN-GB-Apo"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDConf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVh-Dx-gBr">
+                                <rect key="frame" x="20" y="396" width="560" height="92"/>
+                                <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="60"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BeM-7G-YNN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Add-1T-9yo"/>
-                            <constraint firstItem="BeM-7G-YNN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AeP-yF-PRj"/>
+                            <constraint firstItem="vVh-Dx-gBr" firstAttribute="top" secondItem="BeM-7G-YNN" secondAttribute="bottom" constant="36" id="Exy-5n-eUu"/>
+                            <constraint firstItem="BeM-7G-YNN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Vtn-3i-mCc"/>
+                            <constraint firstItem="BeM-7G-YNN" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="90" id="bL9-nr-ng1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vVh-Dx-gBr" secondAttribute="trailing" id="mQ4-vo-Mnw"/>
+                            <constraint firstItem="vVh-Dx-gBr" firstAttribute="centerX" secondItem="BeM-7G-YNN" secondAttribute="centerX" id="pPW-TY-pIh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="vVh-Dx-gBr" secondAttribute="leading" id="zTl-fU-oe4"/>
                         </constraints>
                     </view>
                 </viewController>

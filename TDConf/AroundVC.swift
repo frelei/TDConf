@@ -29,7 +29,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func loadData(){
         
         KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
-            //let recordID = CKRecordID(recordName: recordID!)
             let reference = CKReference( recordID: recordID!, action: .DeleteSelf )
             if self.query == nil{
                 self.query = KBQueryOperation<Attendee>(recordType: "Attendee"
@@ -109,20 +108,32 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.performSegueWithIdentifier("goToProfileSegue", sender: attendee)
     }
     
+    func handleRefresh(refreshController: UIRefreshControl){
+        self.query?.operation = nil;
+        self.attendees = [Attendee]();
+        self.refreshController.beginRefreshing();
+        self.loadData();
+    }
+    
     func btnClickedConnect(sender: UIButton){
         
         let cell = sender.superview?.superview as! AroundCell
         let accepter = cell.attendee
         
-        let accepterReference = CKReference(recordID: accepter!.record!.recordID, action: .DeleteSelf)
+        // Adding subscription
+        KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+            let attendeeReference = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
+            let notification = CKNotificationInfo()
+            notification.alertBody = "\(accepter.name!) wants share information with you"
+            notification.shouldSendContentAvailable = true
+            notification.soundName = UILocalNotificationDefaultSoundName
+    
+            let predicate = NSPredicate(format: "requester == %@ && accepted == %@", attendeeReference, "1")
+            KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: predicate, options: .FiresOnRecordUpdate)
+            
+            
+        }
         
-        let notification = CKNotificationInfo()
-        notification.alertBody = "\(accepter.name!) wants share information with you"
-        notification.shouldSendContentAvailable = true
-        notification.soundName = UILocalNotificationDefaultSoundName
-        
-        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "accepter == %@ && accepted == %@", accepterReference, "1"), options: .FiresOnRecordUpdate)
-
         let connection = CKRecord(recordType: "Connection")
         connection["requester"] = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
         connection["accepter"] = CKReference(recordID: accepter.record!.recordID, action: .DeleteSelf)
@@ -146,14 +157,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
     }
     
-    func handleRefresh(refreshController: UIRefreshControl){
-        self.query?.operation = nil;
-        self.attendees = [Attendee]();
-        self.refreshController.beginRefreshing();
-        self.loadData();
-    }
-    
-    
      // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToProfileSegue" {
@@ -161,6 +164,4 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             profileVC.attendee = sender as? Attendee
         }
      }
- 
-    
 }
