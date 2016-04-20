@@ -96,7 +96,6 @@ class EditProfile: UITableViewController, UITextViewDelegate, UITextFieldDelegat
                 KBCloudKit.dataBaseFromContainer(type: .PUBLIC).saveRecord(self.attendee!.record!, completionHandler: { (record, error) in
                     if error == nil{
                         self.performSegueWithIdentifier("unwindEdit", sender: self)
-                        //self.dismissViewControllerAnimated(true, completion: nil)
                     }else{
                         Logging(error?.description)
                         let alertController = UIAlertController.showBasicAlertMessage("Occour an error on server", title: "Whoops!!!")

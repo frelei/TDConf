@@ -79,9 +79,8 @@ class TabBarController: UITabBarController {
                 Logging(error?.description)
             }
             else{
-                // TODO: change the layout
+
             }
-            
         }
     }
     

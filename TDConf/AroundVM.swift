@@ -13,9 +13,11 @@ struct AroundVM: AroundCellPresentable
     var username: String
     var profession: String
     var profile: NSURL
+    var attendee: Attendee
     
     init(attendee: Attendee)
     {
+        self.attendee = attendee
         self.profile = attendee.profileImage!.fileURL
         self.username = attendee.name!
         self.profession = attendee.profession!

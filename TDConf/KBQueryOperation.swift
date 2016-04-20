@@ -15,6 +15,7 @@ class KBQueryOperation<T:KBRecord>
     var query: CKQuery?
     var cursor: CKQueryCursor?
     var limit: Int?
+    var operation: CKQueryOperation?
     
     init(recordType:String, predicate: NSPredicate, resultLimit: Int?, sort: NSSortDescriptor?)
     {
@@ -28,18 +29,18 @@ class KBQueryOperation<T:KBRecord>
     
     func performQuery(completion: (result:[T]?, error: NSError?) -> Void)
     {
-        let operation = cursor == nil ? CKQueryOperation(query: self.query!)
+        self.operation = cursor == nil ? CKQueryOperation(query: self.query!)
                                       : CKQueryOperation(cursor: cursor!)
         if let resultLimit = limit
         {
-            operation.resultsLimit = resultLimit
+            self.operation!.resultsLimit = resultLimit
         }
         
-        operation.recordFetchedBlock = { (record: CKRecord) -> Void in
+        self.operation!.recordFetchedBlock = { (record: CKRecord) -> Void in
             self.objects?.append(record)
         }
         
-        operation.queryCompletionBlock = { (cursor: CKQueryCursor?, error: NSError?) -> Void in
+        self.operation!.queryCompletionBlock = { (cursor: CKQueryCursor?, error: NSError?) -> Void in
             if error != nil
             {
                 completion(result: nil, error: error)
@@ -52,6 +53,7 @@ class KBQueryOperation<T:KBRecord>
             
             completion(result: values, error: nil)
         }
-        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(operation)
+        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(operation!)
     }
+    
 }

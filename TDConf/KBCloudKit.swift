@@ -16,58 +16,6 @@ protocol KBRecord
     init(record: CKRecord)
 }
 
-/**
-    CKRecord extension provide new functionalities to this data type
- */
-extension CKRecord
-{
-    
-    /**
-        Save an object in cloudkit.
-        
-        - parameter: classType, the type of the class 
-        - parameter: container, the default (nil) is the default container
-        - parameter: database, the default is the public database
-        - parameter: completion, closure where returns the result and the error
-    */
-//    func save<T: KBRecord>(classType: T.Type, container: String? = nil, database: DATABASE_TYPE = .PUBLIC, completion:(result:CKRecord?, error: NSError?) -> Void)
-//    {
-//        KBCloudKit.dataBaseFromContainer(container, type: database).saveRecord(self) { (record, error) in
-//            if error == nil
-//            {
-//                completion(result: T(record:record!) as? CKRecord, error:nil)
-//            }
-//            else
-//            {
-//                Logging(error?.description)
-//                completion(result: nil, error: error)
-//            }
-//        }
-//    }
-    
-    /**
-        Delete an object in cloudkit.
-     
-        - parameter: container, The default (nil) is the default container
-        - parameter: database, The default (.PUBLIC) is the default database
-        - paramter: completion, closure has the result and the error
-    */
-//    func delete(container: String? = nil, database:DATABASE_TYPE = .PUBLIC, completion:(result:CKRecordID?, error: NSError?) -> Void)
-//    {
-//        KBCloudKit.dataBaseFromContainer(container, type: database).deleteRecordWithID(self.recordID) { (recordID, error) in
-//            if error == nil
-//            {
-//                completion(result: recordID, error: nil)
-//            }
-//            else
-//            {
-//                Logging(error?.description)
-//                completion(result: nil, error: nil)
-//            }
-//        }
-//    }
-}
-
 enum DATABASE_TYPE {
     case PUBLIC, PRIVATE
 }
@@ -134,10 +82,6 @@ class KBCloudKit
         queryOperation.performQuery { (result, error) in
             if error == nil
             {
-//                let values = result?.map({ (element) -> T in
-//                    return T(record: element)
-//                })
-                
                 completion(result: result, error: nil)
             }
             else
@@ -184,7 +128,43 @@ class KBCloudKit
             }
         }
     }
-        
     
-  
+    static func registerSubscription(type: String, notificationInfo: CKNotificationInfo, predicate: NSPredicate, options: CKSubscriptionOptions){
+        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
+            let createdSubscriptions = subscriptions?.filter({ (element) -> Bool in
+                return element.predicate == predicate && element.recordType == type
+            })
+            
+            if createdSubscriptions?.count == 0{
+                let subscription = CKSubscription(recordType: type, predicate: predicate, options: options)
+                subscription.notificationInfo = notificationInfo
+                KBCloudKit.dataBaseFromContainer(type: .PUBLIC).saveSubscription(subscription) { (subscription, error) in
+                    if error == nil{
+                        
+                    }else{
+                        Logging(error?.description)
+                    }
+                }
+            }
+        }
+    }
+    
+    static func fetchRecordsByIDs<T:KBRecord>(type: String, classType: T.Type, records:[CKRecordID], completion:(records: [T]?, error: NSError?) -> Void){
+        let fetchOperation = CKFetchRecordsOperation(recordIDs: records)
+        fetchOperation.fetchRecordsCompletionBlock =  { (records: [CKRecordID : CKRecord]?, error: NSError?) in
+            if error == nil{
+                var objects = [T]()
+                for (_,value) in records!{
+                    objects.append( T(record:value) )
+                }
+                completion(records: objects, error: nil)
+            }else{
+                Logging(error)
+                completion(records: nil, error: error)
+            }
+        }
+        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(fetchOperation)
+    }
+    
+    
 }

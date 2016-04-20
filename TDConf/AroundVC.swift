@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,23 +19,40 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: VARIABLE
     var attendees = [Attendee]()
-    
+    var currentAttendee : Attendee?
+    var query : KBQueryOperation<Attendee>?
+
     
     // MARK: DATA PROVIDER
     func loadData(){
-        let query = KBQueryOperation<Attendee>(recordType: "Attendee"
-            , predicate: NSPredicate(value: true)
-            , resultLimit: nil
-            , sort: NSSortDescriptor(key: "creationDate", ascending: false))
         
-        
-        query.performQuery{ (result, error) in
-            if error == nil
-            {
-                dispatch_async(dispatch_get_main_queue(), { 
+        if Settings.sharedInstance.userRecordID() != nil{
+            let recordID = CKRecordID(recordName: Settings.sharedInstance.userRecordID()!)
+            let reference = CKReference( recordID: recordID, action: .DeleteSelf )
+            if self.query == nil{
+                self.query = KBQueryOperation<Attendee>(recordType: "Attendee"
+                    , predicate: NSPredicate( format: "user != %@", reference )
+                    , resultLimit: 50
+                    , sort: NSSortDescriptor(key: "creationDate", ascending: false))
+            }
+            
+            self.query!.performQuery{ (result, error) in
+                if error == nil
+                {
                     self.attendees.appendContentsOf(result!)
-                    self.tableView.reloadData()
-                })
+                    Attendee.attendeeUser { (result, error) in
+                        self.currentAttendee = result
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                            
+                        })
+                    }
+                }
+            }
+        }else{
+            KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+                Settings.sharedInstance.saveUserRecordID(recordID!.recordName)
+                self.loadData()
             }
         }
     }
@@ -42,6 +60,7 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.loadData()
     }
@@ -55,8 +74,46 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(AROUND_CELL, forIndexPath: indexPath) as! AroundCell
         let attendee = self.attendees[indexPath.row]
         let aroundVM = AroundVM(attendee: attendee)
-        cell.configure(aroundVM)
+        cell.configure(aroundVM, attendee: self.currentAttendee!)
+        cell.btnConnect.addTarget(self, action: #selector(AroundVC.btnClickedConnect(_:)), forControlEvents: .TouchUpInside)
         return cell;
+    }
+    
+    func btnClickedConnect(sender: UIButton){
+        
+        let cell = sender.superview?.superview as! AroundCell
+        let accepter = cell.attendee
+        
+        let attendeeReference = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
+        
+        let notification = CKNotificationInfo()
+        notification.alertBody = "\(accepter.name!) wants share information with you"
+        notification.shouldSendContentAvailable = true
+        notification.soundName = UILocalNotificationDefaultSoundName   
+        
+        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "requester == %@ && accepted == %@", attendeeReference, "1"), options: .FiresOnRecordUpdate)
+
+        let connection = CKRecord(recordType: "Connection")
+        connection["requester"] = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
+        connection["accepter"] = CKReference(recordID: accepter.record!.recordID, action: .DeleteSelf)
+        connection["accepted"] = "0"
+        
+        let reference = CKReference(recordID: accepter.record!.recordID, action: .DeleteSelf)
+        if self.currentAttendee?.connection != nil{
+            self.currentAttendee?.connection?.append(reference)
+        }else{
+            self.currentAttendee?.connection = [CKReference]()
+            self.currentAttendee?.connection?.append(reference)
+        }
+        let modifyOperation = CKModifyRecordsOperation(recordsToSave: [connection, self.currentAttendee!.record!], recordIDsToDelete: nil)
+        modifyOperation.modifyRecordsCompletionBlock = {(records: [CKRecord]?, recordIDs: [CKRecordID]?, error: NSError?) in
+            if error == nil{
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.tableView.reloadData()
+                })
+            }
+        }
+        KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
     }
     
 

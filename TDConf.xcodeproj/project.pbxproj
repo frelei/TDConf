@@ -44,6 +44,8 @@
 		5B38EBE31CBAD6AF001E9A68 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */; };
 		5B38EBE71CBAD71C001E9A68 /* AroundVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */; };
 		5B38EBE91CBAD734001E9A68 /* AroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38EBE81CBAD734001E9A68 /* AroundCell.swift */; };
+		5B9DEF621CC6BF1B00A5894F /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DEF611CC6BF1B00A5894F /* Connection.swift */; };
+		5B9DEF641CC6CE9D00A5894F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DEF631CC6CE9D00A5894F /* Settings.swift */; };
 		5BA85F811CC3D72C00100A97 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA85F801CC3D72C00100A97 /* Helper.swift */; };
 		5BFC5DC91CC5711A003BABBD /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5DC81CC5711A003BABBD /* EditProfile.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		5B38EBE21CBAD6AF001E9A68 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		5B38EBE61CBAD71C001E9A68 /* AroundVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundVM.swift; sourceTree = "<group>"; };
 		5B38EBE81CBAD734001E9A68 /* AroundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundCell.swift; sourceTree = "<group>"; };
+		5B9DEF611CC6BF1B00A5894F /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		5B9DEF631CC6CE9D00A5894F /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5BA85F801CC3D72C00100A97 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5BFC5DC81CC5711A003BABBD /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +199,7 @@
 			children = (
 				5B38EB9D1CB8543B001E9A68 /* Session.swift */,
 				5B38EB9B1CB85432001E9A68 /* Attendee.swift */,
+				5B9DEF611CC6BF1B00A5894F /* Connection.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				5B38EBC31CBA9139001E9A68 /* Extensions */,
 				5B38EBC11CBA86EA001E9A68 /* CloudKit */,
 				5BA85F801CC3D72C00100A97 /* Helper.swift */,
+				5B9DEF631CC6CE9D00A5894F /* Settings.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -452,8 +458,10 @@
 				5BA85F811CC3D72C00100A97 /* Helper.swift in Sources */,
 				5B38EBAE1CB854FE001E9A68 /* KBCloudKit.swift in Sources */,
 				5B38EBA31CB8545B001E9A68 /* TabBarController.swift in Sources */,
+				5B9DEF621CC6BF1B00A5894F /* Connection.swift in Sources */,
 				5B38EBB51CB87DFF001E9A68 /* ScheduleVM.swift in Sources */,
 				5B38EBC01CBA7BB1001E9A68 /* UIKitExtension.swift in Sources */,
+				5B9DEF641CC6CE9D00A5894F /* Settings.swift in Sources */,
 				5B38EBE91CBAD734001E9A68 /* AroundCell.swift in Sources */,
 				5B38EB9C1CB85432001E9A68 /* Attendee.swift in Sources */,
 				5B38EBE31CBAD6AF001E9A68 /* NotificationVC.swift in Sources */,

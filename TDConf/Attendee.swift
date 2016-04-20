@@ -16,6 +16,7 @@ let KEY_PROFESSION = "profession"
 let KEY_PROFILE = "photo"
 let KEY_EMAIL = "email"
 let KEY_REFERENCE = "user"
+let KEY_REFERENCE_LIST = "connection"
 
 class Attendee: KBRecord
 {
@@ -53,6 +54,12 @@ class Attendee: KBRecord
             self.record![KEY_REFERENCE] = self.userReference
         }
     }
+    var connection: [CKReference]?{
+        didSet{
+            self.record![KEY_REFERENCE_LIST] = self.connection
+        }
+    }
+    
     
     convenience required init(record: CKRecord)
     {
@@ -64,6 +71,7 @@ class Attendee: KBRecord
         self.profession = record[KEY_PROFESSION] as? String
         self.email = record[KEY_EMAIL] as? String
         self.userReference = record[KEY_REFERENCE] as? CKReference
+        self.connection = record[KEY_REFERENCE_LIST] as? [CKReference]
     }
     
     convenience init(recordType: String)
@@ -74,27 +82,19 @@ class Attendee: KBRecord
     
     static func attendeeUser(completion:(result: Attendee?, error: NSError?) -> Void){
             KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
-                if error == nil{
-                        let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
-                        let predicate = NSPredicate(format: "user == %@", reference)
-                        let query = KBQueryOperation<Attendee>(recordType: ATTENDEE_RECORD_TYPE, predicate: predicate, resultLimit: nil, sort: nil)
-                        query.performQuery({ (result, error) in
-                            if error == nil{
-                                if result?.count > 0{
-                                    completion(result: result!.first, error: nil)
-                                }else{
-                                    Logging(error?.description)
-                                    completion(result: nil, error: nil)
-                                }
-                            }else{
-                                Logging(error)
-                                completion(result: nil, error: error)
-                            }
-                        })
-                }else{
-                    Logging(error?.description)
-                    completion(result: nil, error: error)
-                }
+                let reference = CKReference(recordID: recordID!, action: .DeleteSelf)
+                let predicate = NSPredicate(format: "user == %@", reference)
+            
+                let query = CKQuery(recordType:  "Attendee", predicate: predicate)
+                CKContainer.defaultContainer().publicCloudDatabase.performQuery(query, inZoneWithID: nil, completionHandler: { (records, error) in
+                    if error == nil{
+                        let a = Attendee( record: (records?.first!)!)
+                        completion(result: a, error: error)
+                    }else{
+                        Logging(error?.description)
+                    }
+                })
+
         }
     }
     

@@ -19,9 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: TITILLIUM.SEMI_BOLD.rawValue, size: 15)!]
         
+        // Register for notification
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound] , categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
+        
         return true
     }
 
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        let ckNotification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String: NSObject])
+        print(ckNotification.alertBody)
+        
+    }
+    
+    
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
