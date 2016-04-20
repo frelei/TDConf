@@ -47,6 +47,9 @@
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask" translatesAutoresizingMaskIntoConstraints="NO" id="LhN-5Q-JZR">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="438"/>
+                                    </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9mu-s3-PEr">
                                         <rect key="frame" x="235" y="134" width="130" height="130"/>
                                         <constraints>
@@ -77,7 +80,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrX-6a-AmT">
                                         <rect key="frame" x="17" y="26" width="32" height="34"/>
                                         <state key="normal" title="Edit">
-                                            <color key="titleColor" red="0.21176470588235294" green="0.61176470588235299" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="editBtnClicked:" destination="Rfm-pr-bot" eventType="touchUpInside" id="rqs-Ia-oeq"/>
@@ -87,12 +90,11 @@
                                         <rect key="frame" x="282" y="64.5" width="37" height="37"/>
                                         <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask" translatesAutoresizingMaskIntoConstraints="NO" id="LhN-5Q-JZR">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="438"/>
-                                    </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awM-0i-MXG">
                                         <rect key="frame" x="267.5" y="325" width="65" height="30"/>
-                                        <state key="normal" title="Try Again"/>
+                                        <state key="normal" title="Try Again">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="btnTryAgainClicked:" destination="Rfm-pr-bot" eventType="touchUpInside" id="ZVp-Oh-UUw"/>
                                         </connections>
@@ -168,6 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="8xx-N0-L2n" id="A0l-pJ-c4m"/>
+                        <outlet property="btnTopLeft" destination="mrX-6a-AmT" id="rhd-Ew-wka"/>
                         <outlet property="btnTryAgain" destination="awM-0i-MXG" id="Z4H-IZ-9kL"/>
                         <outlet property="imgAvatar" destination="9mu-s3-PEr" id="FS8-Wu-ud5"/>
                         <outlet property="imvBackgroundImage" destination="Ar8-aL-cbB" id="cYG-J8-yBa"/>

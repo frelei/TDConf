@@ -18,8 +18,9 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var lblBio: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet var btnTryAgain: UIButton!
+    @IBOutlet var btnTopLeft: UIButton!
+    
     var attendee: Attendee?
     
     // MARK: VC Life Cycle
@@ -31,26 +32,35 @@ class ProfileVC: UIViewController {
     
     // MARK: Load Data
     func loadAtendee() {
-        Attendee.attendeeUser { (result, error) in
-            if error == nil && result != nil {
-                self.attendee = result
-                dispatch_async(dispatch_get_main_queue(), {
+        self.editButtonItem().enabled = false
+        if self.attendee == nil {
+            Attendee.attendeeUser { (result, error) in
+                if error == nil && result != nil {
+                    self.attendee = result
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.activityIndicator.stopAnimating()
+                        self.configureView()
+                        self.btnTryAgain.hidden = true
+                        self.editButtonItem().enabled = true
+                    })
+                } else if result == nil && error == nil {
                     self.activityIndicator.stopAnimating()
-                    self.configureView()
-                    self.btnTryAgain.hidden = true;
-                })
-            } else if result == nil && error == nil {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.hidden = true
-                self.btnTryAgain.hidden = true;
-                self.performSegueWithIdentifier("goToEditProfileSegue", sender: self.attendee)
-            } else {
-                self.btnTryAgain.hidden = false;
-                self.lblName.text = "";
-                self.lblProfession.text = "";
-                self.lblEmail.text = "";
-                self.lblBio.text = "An error happened. Please try again later"
+                    self.activityIndicator.hidden = true
+                    self.btnTryAgain.hidden = true
+                    self.editButtonItem().enabled = true
+                    self.performSegueWithIdentifier("goToEditProfileSegue", sender: self.attendee)
+                } else {
+                    self.btnTryAgain.hidden = false;
+                    self.lblName.text = "";
+                    self.lblProfession.text = "";
+                    self.lblEmail.text = "";
+                    self.lblBio.text = "An error happened. Please try again later"
+                }
             }
+        } else {
+            self.activityIndicator.stopAnimating()
+            self.btnTopLeft.setTitle("Done", forState: UIControlState.Normal)
+            self.configureView()
         }
     }
     
@@ -85,7 +95,11 @@ class ProfileVC: UIViewController {
     
     // MARK: IBACTION
     @IBAction func editBtnClicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("goToEditProfileSegue", sender: self.attendee)
+        if self.btnTopLeft.titleLabel?.text == "Done" {
+            self.dismissViewControllerAnimated(true, completion: nil);
+        } else {
+            self.performSegueWithIdentifier("goToEditProfileSegue", sender: self.attendee)
+        }
     }
     
     // MARK: NAVIGATION

@@ -150,14 +150,19 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
-                                                    <rect key="frame" x="537" y="21" width="45" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
+                                                    <rect key="frame" x="532" y="21" width="50" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="W3R-dV-1qx"/>
                                                         <constraint firstAttribute="width" constant="45" id="Whc-Cf-mvm"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="13"/>
                                                     <state key="normal" title="Connect"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Whc-Cf-mvm"/>
+                                                        </mask>
+                                                    </variation>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -223,11 +228,20 @@ If you have already done so, pull down to refresh.</string>
                     <connections>
                         <outlet property="lblYouNeedToRegister" destination="dGi-gE-tF9" id="mnh-8w-5To"/>
                         <outlet property="tableView" destination="GfU-e3-HGl" id="zhh-bj-Vjt"/>
+                        <segue destination="Jou-Se-U5f" kind="presentation" identifier="goToProfileSegue" id="Vyr-aN-C7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGE-Tx-b8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258" y="375"/>
+            <point key="canvasLocation" x="1314" y="375"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="u03-Q6-F9l">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="Jou-Se-U5f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1E-PP-HaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878.5" y="178"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6h6-nD-Xzz">
