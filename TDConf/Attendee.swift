@@ -88,8 +88,12 @@ class Attendee: KBRecord
                 let query = CKQuery(recordType:  "Attendee", predicate: predicate)
                 CKContainer.defaultContainer().publicCloudDatabase.performQuery(query, inZoneWithID: nil, completionHandler: { (records, error) in
                     if error == nil{
-                        let a = Attendee( record: (records?.first!)!)
-                        completion(result: a, error: error)
+                        if records?.count > 0 {
+                            let a = Attendee( record: (records?.first!)!)
+                            completion(result: a, error: error)
+                        } else {
+                            completion(result: nil, error: nil);
+                        }
                     }else{
                         Logging(error?.description)
                     }

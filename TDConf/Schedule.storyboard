@@ -133,13 +133,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Rodrigo Freitas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOw-fv-Chi">
-                                                    <rect key="frame" x="8" y="34.5" width="584" height="20"/>
+                                                    <rect key="frame" x="22" y="35" width="570" height="20"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Light" family="Titillium Web" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CloudKit é uma tecnologia da Apple para " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9P-oM-IOf">
-                                                    <rect key="frame" x="22" y="80.5" width="560" height="23"/>
+                                                    <rect key="frame" x="22" y="81" width="560" height="23"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Regular" family="Titillium Web" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -151,7 +151,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:40 às 17:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGO-OB-H6z">
-                                                    <rect key="frame" x="8" y="55.5" width="584" height="17"/>
+                                                    <rect key="frame" x="22" y="56" width="570" height="17"/>
                                                     <fontDescription key="fontDescription" name="TitilliumWeb-Italic" family="Titillium Web" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -159,9 +159,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Rv2-ff-enk" secondAttribute="trailing" id="3kt-qO-u2x"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="NOw-fv-Chi" secondAttribute="leading" id="4Ut-gS-7SK"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="NOw-fv-Chi" secondAttribute="leading" constant="-14" id="4Ut-gS-7SK"/>
                                                 <constraint firstItem="NOw-fv-Chi" firstAttribute="top" secondItem="Rv2-ff-enk" secondAttribute="bottom" constant="4" id="EJL-9O-Xjs"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="mGO-OB-H6z" secondAttribute="leading" id="F2T-Es-C6N"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="mGO-OB-H6z" secondAttribute="leading" constant="-14" id="F2T-Es-C6N"/>
                                                 <constraint firstItem="mGO-OB-H6z" firstAttribute="top" secondItem="NOw-fv-Chi" secondAttribute="bottom" constant="1" id="Yn6-tp-xht"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NOw-fv-Chi" secondAttribute="trailing" id="ZQZ-ya-0Md"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="Rv2-ff-enk" secondAttribute="leading" id="btH-Ru-55p"/>

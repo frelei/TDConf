@@ -10,18 +10,20 @@ import UIKit
 import CloudKit
 
 class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     // MARK: CONSTANTS
     let AROUND_CELL = "AROUND_CELL"
+    let refreshController = UIRefreshControl()
     
     // MARK: IBOULET
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var lblYouNeedToRegister: UILabel!
     
     // MARK: VARIABLE
     var attendees = [Attendee]()
     var currentAttendee : Attendee?
     var query : KBQueryOperation<Attendee>?
-
+    
     
     // MARK: DATA PROVIDER
     func loadData(){
@@ -41,12 +43,22 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 {
                     self.attendees.appendContentsOf(result!)
                     Attendee.attendeeUser { (result, error) in
-                        self.currentAttendee = result
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.tableView.reloadData()
-                            
+                            if error == nil && result != nil {
+                                self.lblYouNeedToRegister.hidden = true;
+                                self.currentAttendee = result
+                                self.tableView.reloadData()
+                            } else {
+                                self.lblYouNeedToRegister.hidden = false;
+                            }
+                            self.refreshController.endRefreshing();
                         })
                     }
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.lblYouNeedToRegister.hidden = false;
+                        self.refreshController.endRefreshing();
+                    })
                 }
             }
         }
@@ -55,12 +67,18 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.loadData()
+        self.configureTableView()
+        self.refreshController.beginRefreshing();
+        self.loadData();
     }
-
+    
     // MARK: TableView
+    func configureTableView() {
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        refreshController.addTarget(self, action: #selector(AroundVC.handleRefresh(_:)), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshController)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.attendees.count
     }
@@ -84,7 +102,7 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let notification = CKNotificationInfo()
         notification.alertBody = "\(accepter.name!) wants share information with you"
         notification.shouldSendContentAvailable = true
-        notification.soundName = UILocalNotificationDefaultSoundName   
+        notification.soundName = UILocalNotificationDefaultSoundName
         
         KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "accepter == %@ && accepted == %@", accepterReference, "1"), options: .FiresOnRecordUpdate)
 
@@ -103,7 +121,7 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let modifyOperation = CKModifyRecordsOperation(recordsToSave: [connection, self.currentAttendee!.record!], recordIDsToDelete: nil)
         modifyOperation.modifyRecordsCompletionBlock = {(records: [CKRecord]?, recordIDs: [CKRecordID]?, error: NSError?) in
             if error == nil{
-                dispatch_async(dispatch_get_main_queue(), { 
+                dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
                 })
             }
@@ -111,15 +129,21 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func handleRefresh(refreshController: UIRefreshControl){
+        self.query?.operation = nil;
+        self.attendees = [Attendee]();
+        self.refreshController.beginRefreshing();
+        self.loadData();
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
