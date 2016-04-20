@@ -29,7 +29,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func loadData(){
         
         KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
-            //let recordID = CKRecordID(recordName: recordID!)
             let reference = CKReference( recordID: recordID!, action: .DeleteSelf )
             if self.query == nil{
                 self.query = KBQueryOperation<Attendee>(recordType: "Attendee"
@@ -103,8 +102,15 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell;
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let attendee = self.attendees[indexPath.row]
+        self.performSegueWithIdentifier("goToProfileSegue", sender: attendee)
+    }
+    
     func handleRefresh(refreshController: UIRefreshControl){
-        self.query?.operation = nil;
+        self.query?.cursor = nil;
+        self.query = nil;
         self.attendees = [Attendee]();
         self.refreshController.beginRefreshing();
         self.loadData();
@@ -114,9 +120,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cell = sender.superview?.superview as! AroundCell
         let accepter = cell.attendee
-        
-//        let accepterReference = CKReference(recordID: accepter!.record!.recordID, action: .DeleteSelf)
-        
         
         // Adding subscription
         KBCloudKit.container().fetchUserRecordIDWithCompletionHandler { (recordID, error) in
@@ -131,10 +134,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             
         }
-//        
-//        KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: NSPredicate(format: "accepter == %@ && accepted == %@", accepterReference, "1"), options: .FiresOnRecordUpdate)
-
-
         
         let connection = CKRecord(recordType: "Connection")
         connection["requester"] = CKReference(recordID: self.currentAttendee!.record!.recordID, action: .DeleteSelf)
@@ -159,14 +158,11 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
     }
     
-    /*
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToProfileSegue" {
+            let profileVC = segue.destinationViewController as! ProfileVC
+            profileVC.attendee = sender as? Attendee
+        }
      }
-     */
-    
 }

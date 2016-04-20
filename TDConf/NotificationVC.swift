@@ -45,15 +45,17 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         
                         KBCloudKit.fetchRecordsByIDs("Attendee", classType: Attendee.self, records: objects!, completion: { (records, error) in
                             
+                            dispatch_async(dispatch_get_main_queue(), {
+
                             self.attendeeConnection.appendContentsOf(records!)
                            
                             if self.attendeeConnection.count == 0 {
                                 self.lblError.text = "You don't have notifications right now. Pull down to refresh."
                                 self.lblError.hidden = false
                             }
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.tableView.reloadData()
-                                self.refreshController.endRefreshing()
+                                
+                            self.tableView.reloadData()
+                            self.refreshController.endRefreshing()
                             })
                         })
                         
@@ -95,10 +97,23 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NOTIFICATION_CELL", forIndexPath: indexPath)
         let c = cell.viewWithTag(2) as! UILabel
+        let i = cell.viewWithTag(1) as! UIImageView
         let v = self.attendeeConnection[indexPath.row]
+        i.roundImage()
+        UIImage.loadImageFrom(v.profileImage?.fileURL) { (image) in
+            dispatch_async(dispatch_get_main_queue(), {
+                i.image = image
+            })
+        }
         c.text = v.name
         return cell
         
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let attendee = self.attendeeConnection[indexPath.row]
+        self.performSegueWithIdentifier("goToProfileSegue", sender: attendee)
     }
     
     func handleRefresh(refreshController: UIRefreshControl){
@@ -135,14 +150,11 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "goToProfileSegue" {
+            let profileVC = segue.destinationViewController as! ProfileVC
+            profileVC.attendee = sender as? Attendee
+        }
     }
-    */
-
 }
