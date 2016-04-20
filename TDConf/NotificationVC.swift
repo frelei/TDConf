@@ -42,7 +42,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let objects = result?.map({ (element) -> CKRecordID in
                             return element.requesterReference!.recordID
                         })
-                        
+                        self.connections.appendContentsOf(result!)
                         KBCloudKit.fetchRecordsByIDs("Attendee", classType: Attendee.self, records: objects!, completion: { (records, error) in
                             
                             dispatch_async(dispatch_get_main_queue(), {
@@ -96,16 +96,31 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NOTIFICATION_CELL", forIndexPath: indexPath)
-        let c = cell.viewWithTag(2) as! UILabel
-        let i = cell.viewWithTag(1) as! UIImageView
+        let label = cell.viewWithTag(2) as! UILabel
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        let button = cell.viewWithTag(3) as! UIButton
+
         let v = self.attendeeConnection[indexPath.row]
-        i.roundImage()
+        
+        imageView.roundImage()
         UIImage.loadImageFrom(v.profileImage?.fileURL) { (image) in
             dispatch_async(dispatch_get_main_queue(), {
-                i.image = image
+                imageView.image = image
             })
         }
-        c.text = v.name
+        label.text = "\(v.name!) wants to share his info with you"
+        
+        let foundConnected  = self.connections.filter { (connect) -> Bool in
+            return connect.requesterReference?.recordID == v.record!.recordID
+        }.first
+
+        
+        if foundConnected?.accepted == "0"{
+            button.enabled = true
+        }else{
+            button.enabled = false
+        }
+        
         return cell
         
     }

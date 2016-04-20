@@ -32,8 +32,6 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.sessions = result!
                     self.tableView.reloadData()
                 })
-            } else {
-                
             }
             dispatch_async(dispatch_get_main_queue(), {
                 self.refreshController.endRefreshing()

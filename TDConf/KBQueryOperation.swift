@@ -56,4 +56,10 @@ class KBQueryOperation<T:KBRecord>
         KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(operation!)
     }
     
+    func resetQuery(){
+        self.cursor = nil
+        self.objects = [CKRecord]()
+    }
+    
+    
 }

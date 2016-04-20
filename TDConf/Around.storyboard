@@ -13,7 +13,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--PEOPLE AROUND-->
+        <!--People Around-->
         <scene sceneID="ZmR-jH-fw6">
             <objects>
                 <viewController id="vJ2-zT-fFo" customClass="AroundVC" customModule="TDConf" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O09-Wy-kRP">
                                                     <rect key="frame" x="532" y="21" width="50" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="W3R-dV-1qx"/>
@@ -224,7 +224,7 @@ If you have already done so, pull down to refresh.</string>
                             <constraint firstItem="31z-WT-raU" firstAttribute="leading" secondItem="QMe-Ee-9uF" secondAttribute="leadingMargin" constant="-20" id="wjL-VM-Mz0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PEOPLE AROUND" id="Gpb-2T-Lfy"/>
+                    <navigationItem key="navigationItem" title="People Around" id="Gpb-2T-Lfy"/>
                     <connections>
                         <outlet property="lblYouNeedToRegister" destination="dGi-gE-tF9" id="mnh-8w-5To"/>
                         <outlet property="tableView" destination="GfU-e3-HGl" id="zhh-bj-Vjt"/>

@@ -109,11 +109,10 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func handleRefresh(refreshController: UIRefreshControl){
-        self.query?.cursor = nil;
-        self.query = nil;
-        self.attendees = [Attendee]();
-        self.refreshController.beginRefreshing();
-        self.loadData();
+        self.query!.resetQuery()
+        self.attendees = [Attendee]()
+        self.refreshController.beginRefreshing()
+        self.loadData()
     }
     
     func btnClickedConnect(sender: UIButton){
@@ -131,8 +130,6 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
             let predicate = NSPredicate(format: "requester == %@ && accepted == %@", attendeeReference, "1")
             KBCloudKit.registerSubscription("Connection", notificationInfo: notification, predicate: predicate, options: .FiresOnRecordUpdate)
-            
-            
         }
         
         let connection = CKRecord(recordType: "Connection")
