@@ -43,5 +43,6 @@ class AroundCell: UITableViewCell {
             return  presentable.attendee.record?.recordID == element.recordID
         })
         self.btnConnect.enabled = (connected != nil && connected?.count > 0)  ? false : true
+        self.btnConnect.setTitle(self.btnConnect.enabled ? "Connect" : "Connected", forState: UIControlState.Normal)
     }
 }

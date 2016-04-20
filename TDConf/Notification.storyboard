@@ -146,7 +146,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT7-rL-RBx">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT7-rL-RBx">
                                                     <rect key="frame" x="536" y="27" width="44" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="Dxn-KH-2xA"/>
@@ -176,6 +176,8 @@
                                                 <constraint firstItem="yMi-6d-noG" firstAttribute="leading" secondItem="b8q-Je-dtX" secondAttribute="leadingMargin" constant="8" id="0rt-hi-MTE"/>
                                                 <constraint firstItem="OfK-7R-fW7" firstAttribute="leading" secondItem="yMi-6d-noG" secondAttribute="trailing" constant="18" id="6kc-Nv-RBa"/>
                                                 <constraint firstAttribute="bottom" secondItem="lT7-rL-RBx" secondAttribute="bottom" constant="20" id="BuM-0l-XKo"/>
+                                                <constraint firstItem="yMi-6d-noG" firstAttribute="centerY" secondItem="b8q-Je-dtX" secondAttribute="centerY" id="D0D-FW-UTp"/>
+                                                <constraint firstItem="OfK-7R-fW7" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="13" id="GJu-ac-CkK"/>
                                                 <constraint firstItem="yMi-6d-noG" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="5" id="HFV-M8-qQZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="OfK-7R-fW7" secondAttribute="bottom" constant="13" id="PBH-1W-aZF"/>
                                                 <constraint firstItem="OfK-7R-fW7" firstAttribute="top" secondItem="b8q-Je-dtX" secondAttribute="topMargin" constant="13" id="gQ0-of-meS"/>
@@ -190,6 +192,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="HFV-M8-qQZ"/>
+                                                    <exclude reference="gQ0-of-meS"/>
                                                     <exclude reference="BuM-0l-XKo"/>
                                                     <exclude reference="ok1-dY-uDk"/>
                                                     <exclude reference="rhc-Mq-1te"/>
@@ -234,11 +238,12 @@
                     <connections>
                         <outlet property="lblError" destination="476-xp-cPL" id="sqg-ES-6NR"/>
                         <outlet property="tableView" destination="VOr-OU-uAu" id="JKc-vW-W57"/>
+                        <segue destination="TTg-6A-4K8" kind="presentation" identifier="goToProfileSegue" id="YEN-pZ-HGj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSX-Jl-iQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="412"/>
+            <point key="canvasLocation" x="1354" y="399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B1s-Mk-hEk">
@@ -257,6 +262,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8GK-w2-3bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="459" y="412"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Z06-7j-8hz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="TTg-6A-4K8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJg-FB-8I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878.5" y="178"/>
         </scene>
     </scenes>
     <resources>

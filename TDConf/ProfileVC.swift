@@ -23,6 +23,20 @@ class ProfileVC: UIViewController {
     
     var attendee: Attendee?
     
+    func setBtnTopLeftText(text :String) -> Void {
+        let font = UIFont.systemFontOfSize(26.0)
+        let attribs = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSStrokeColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: font,
+            NSStrokeWidthAttributeName: 2.0
+        ]
+        
+        let formattedText = NSAttributedString(string: "\(text)", attributes: attribs)
+        self.btnTopLeft.setAttributedTitle(formattedText, forState: UIControlState.Normal)
+
+    }
+    
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +48,7 @@ class ProfileVC: UIViewController {
     func loadAtendee() {
         self.editButtonItem().enabled = false
         if self.attendee == nil {
+            self.setBtnTopLeftText("Edit")
             Attendee.attendeeUser { (result, error) in
                 if error == nil && result != nil {
                     self.attendee = result
@@ -59,7 +74,7 @@ class ProfileVC: UIViewController {
             }
         } else {
             self.activityIndicator.stopAnimating()
-            self.btnTopLeft.setTitle("Done", forState: UIControlState.Normal)
+            self.setBtnTopLeftText("Done")
             self.configureView()
         }
     }

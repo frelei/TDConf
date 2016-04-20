@@ -109,7 +109,8 @@ class AroundVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func handleRefresh(refreshController: UIRefreshControl){
-        self.query?.operation = nil;
+        self.query?.cursor = nil;
+        self.query = nil;
         self.attendees = [Attendee]();
         self.refreshController.beginRefreshing();
         self.loadData();
