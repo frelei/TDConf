@@ -192,14 +192,28 @@
                                     <outlet property="delegate" destination="vJ2-zT-fFo" id="LkM-L2-Jy1"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGi-gE-tF9">
+                                <rect key="frame" x="40" y="260" width="520" height="81.5"/>
+                                <string key="text">You need to register first.
+Go to profile tab.
+
+If you have already done so, pull down to refresh.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GfU-e3-HGl" firstAttribute="leading" secondItem="QMe-Ee-9uF" secondAttribute="leadingMargin" constant="-20" id="2Eo-3s-DuJ"/>
+                            <constraint firstItem="dGi-gE-tF9" firstAttribute="centerX" secondItem="QMe-Ee-9uF" secondAttribute="centerX" id="CGE-wI-eOJ"/>
+                            <constraint firstItem="dGi-gE-tF9" firstAttribute="centerY" secondItem="QMe-Ee-9uF" secondAttribute="centerY" id="I8m-NG-Xcz"/>
                             <constraint firstItem="31z-WT-raU" firstAttribute="top" secondItem="ikM-X2-IQT" secondAttribute="bottom" id="JMi-Qt-Z4E"/>
                             <constraint firstItem="GfU-e3-HGl" firstAttribute="top" secondItem="31z-WT-raU" secondAttribute="bottom" id="Jof-Zw-dH8"/>
                             <constraint firstItem="7No-jm-kYR" firstAttribute="top" secondItem="GfU-e3-HGl" secondAttribute="bottom" id="RTM-r4-RSL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="31z-WT-raU" secondAttribute="trailing" constant="-20" id="YOG-H0-wOX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dGi-gE-tF9" secondAttribute="trailing" constant="20" id="d5x-vf-Nda"/>
+                            <constraint firstItem="dGi-gE-tF9" firstAttribute="leading" secondItem="QMe-Ee-9uF" secondAttribute="leadingMargin" constant="20" id="lk2-uG-290"/>
                             <constraint firstItem="31z-WT-raU" firstAttribute="centerX" secondItem="QMe-Ee-9uF" secondAttribute="centerX" id="mvH-xp-kHn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GfU-e3-HGl" secondAttribute="trailing" constant="-20" id="s07-8y-Hg5"/>
                             <constraint firstItem="31z-WT-raU" firstAttribute="leading" secondItem="QMe-Ee-9uF" secondAttribute="leadingMargin" constant="-20" id="wjL-VM-Mz0"/>
@@ -207,6 +221,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="PEOPLE AROUND" id="Gpb-2T-Lfy"/>
                     <connections>
+                        <outlet property="lblYouNeedToRegister" destination="dGi-gE-tF9" id="mnh-8w-5To"/>
                         <outlet property="tableView" destination="GfU-e3-HGl" id="zhh-bj-Vjt"/>
                     </connections>
                 </viewController>

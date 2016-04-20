@@ -153,7 +153,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT7-rL-RBx">
-                                                    <rect key="frame" x="526" y="18.5" width="48" height="48"/>
+                                                    <rect key="frame" x="526" y="18" width="48" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="48" id="Dxn-KH-2xA"/>
                                                         <constraint firstAttribute="width" constant="45" id="O1Z-wW-Bp7"/>
@@ -207,14 +207,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="476-xp-cPL">
+                                <rect key="frame" x="40" y="300.5" width="520" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VOr-OU-uAu" secondAttribute="trailing" id="4s1-Se-D5L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="476-xp-cPL" secondAttribute="trailing" constant="20" id="7Ml-h1-4KF"/>
+                            <constraint firstItem="476-xp-cPL" firstAttribute="centerY" secondItem="HA1-kz-XXh" secondAttribute="centerY" id="CDl-dJ-viC"/>
                             <constraint firstItem="wuK-kX-IMj" firstAttribute="top" secondItem="PtF-72-HOt" secondAttribute="bottom" id="GUf-8B-PnL"/>
                             <constraint firstItem="7PZ-Nn-DkN" firstAttribute="top" secondItem="VOr-OU-uAu" secondAttribute="bottom" id="NTR-nQ-QcR"/>
+                            <constraint firstItem="476-xp-cPL" firstAttribute="leading" secondItem="HA1-kz-XXh" secondAttribute="leadingMargin" constant="20" id="UFY-wO-ULF"/>
                             <constraint firstItem="wuK-kX-IMj" firstAttribute="centerX" secondItem="HA1-kz-XXh" secondAttribute="centerX" id="Vz3-e3-T4S"/>
                             <constraint firstItem="wuK-kX-IMj" firstAttribute="leading" secondItem="HA1-kz-XXh" secondAttribute="leading" id="coa-95-Vey"/>
+                            <constraint firstItem="476-xp-cPL" firstAttribute="centerX" secondItem="HA1-kz-XXh" secondAttribute="centerX" id="edN-C4-P3y"/>
                             <constraint firstItem="VOr-OU-uAu" firstAttribute="leading" secondItem="HA1-kz-XXh" secondAttribute="leading" id="i2Z-kI-oQJ"/>
                             <constraint firstAttribute="trailing" secondItem="wuK-kX-IMj" secondAttribute="trailing" id="tIQ-ML-tt2"/>
                             <constraint firstItem="VOr-OU-uAu" firstAttribute="top" secondItem="wuK-kX-IMj" secondAttribute="bottom" id="wac-Ch-iS2"/>
@@ -222,6 +232,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Notification" id="T3n-KS-cta"/>
                     <connections>
+                        <outlet property="lblError" destination="476-xp-cPL" id="sqg-ES-6NR"/>
                         <outlet property="tableView" destination="VOr-OU-uAu" id="JKc-vW-W57"/>
                     </connections>
                 </viewController>
