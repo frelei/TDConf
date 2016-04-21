@@ -20,28 +20,58 @@ class ProfileVC: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var btnTryAgain: UIButton!
     @IBOutlet var btnTopLeft: UIButton!
+    @IBOutlet var viewBottomGradient: UIView!
+    @IBOutlet var viewTopGradient: UIView!
+    
+    var gl: CAGradientLayer?
+    var tabBatDefaultColor: UIColor?
+    
     
     var attendee: Attendee?
     
     func setBtnTopLeftText(text :String) -> Void {
-        let font = UIFont.systemFontOfSize(26.0)
-        let attribs = [
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSStrokeColorAttributeName: UIColor.blackColor(),
-            NSFontAttributeName: font,
-            NSStrokeWidthAttributeName: 2.0
-        ]
-        
-        let formattedText = NSAttributedString(string: "\(text)", attributes: attribs)
-        self.btnTopLeft.setAttributedTitle(formattedText, forState: UIControlState.Normal)
+//        let font = UIFont.systemFontOfSize(22.0)
+//        let attribs = [
+//            NSForegroundColorAttributeName: UIColor.whiteColor(),
+//            NSStrokeColorAttributeName: UIColor.whiteColor(),
+//            NSFontAttributeName: font,
+//            NSStrokeWidthAttributeName: 2.0
+//        ]
+//        
+//        let formattedText = NSAttributedString(string: "\(text)", attributes: attribs)
+        self.btnTopLeft.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.btnTopLeft.setTitle(text, forState: UIControlState.Normal)
 
     }
     
     // MARK: VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBatDefaultColor = self.tabBarController?.tabBar.barTintColor;
         self.imgAvatar.roundImage()
         self.loadAtendee()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.barTintColor = self.tabBatDefaultColor
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
+
+        if self.gl == nil {
+            
+            let colorTop = UIColor.clearColor().CGColor
+            let colorBottom = UIColor.blackColor().CGColor
+            
+            self.gl = CAGradientLayer()
+            self.gl!.frame = self.viewTopGradient.frame
+            self.gl!.colors = [ colorTop, colorBottom]
+            self.gl!.locations = [ 0.0, 1.0]
+            self.viewTopGradient.layer.addSublayer(self.gl!)
+        }
+        
     }
     
     // MARK: Load Data
