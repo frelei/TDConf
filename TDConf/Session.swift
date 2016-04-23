@@ -48,7 +48,7 @@ class Session: KBRecord
             self.record![KEY_AUTHOR] = self.author
         }
     }
-    
+       
     required convenience init(record: CKRecord)
     {
         self.init()
