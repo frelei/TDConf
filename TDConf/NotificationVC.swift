@@ -174,7 +174,7 @@ class NotificationVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         KBCloudKit.dataBaseFromContainer(type: .PUBLIC).addOperation(modifyOperation)
-        
+          
     }
     
 
